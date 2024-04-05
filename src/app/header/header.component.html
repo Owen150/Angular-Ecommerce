@@ -1,0 +1,39 @@
+<nav class="header-container">
+  <!-- home routing -->
+  <a routerLink="home" class="link">
+    <mat-icon>home</mat-icon>
+    Home
+  </a>
+
+  <!-- categories routing -->
+  <a routerLink="categories" class="link">
+    <mat-icon>reorder</mat-icon>
+    Categories
+  </a>
+
+  <!--Add product route-->
+  <a class="link add-product-container" (click)="productModal()">
+    <mat-icon>note_add</mat-icon>
+    Add Product
+  </a>
+
+  <!-- Cart Link -->
+  <div routerLink="cart" class="link">
+    <mat-icon>add_shopping_cart</mat-icon>
+    <div class="cart-items" *ngIf="cartItemCount">{{cartItemCount}}</div>
+  </div>
+
+  <form #searchBox="ngForm">
+    <div class="header-search">
+      <input
+        matInput
+        class="search-box"
+        placeholder="Search Product"
+        type="text"
+        name="searchText"
+        [(ngModel)]="searchText"
+      />
+      <!-- <mat-icon>search</mat-icon> -->
+    </div>
+  </form>
+</nav>
