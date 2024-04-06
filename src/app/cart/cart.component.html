@@ -20,7 +20,15 @@
   <!-- Cart Content -->
   <div class="cart-content" *ngIf="cartItems.length">
     <div class="items-container">
-      <app-cart-item [productData]="cartItem" *ngFor="let cartItem of cartItems"></app-cart-item>
+      <app-cart-item
+        [productData]="cartItem"
+        *ngFor="let cartItem of cartItems"
+      ></app-cart-item>
+    </div>
+    <div>
+      <app-price-details></app-price-details>
+      <button mat-raised-button class="btn-theme btn-checkout">Checkout</button>
     </div>
   </div>
+  
 </div>

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CartService {
+  // An array containing productData
   cartProducts: any[] = [];
   cartSubject = new Subject();
   //Discount - Percentage
@@ -66,5 +67,25 @@ export class CartService {
       // Sending the updated cartProduct value/s
       this.cartSubject.next(this.cartProducts);
     }
+  }
+
+  //Billing Details
+  getBilling(cartItems: any) {
+    // A single object with various attributes
+    let billingDetails = {
+      price: 0,
+      discount: this.discount,
+      delivery: 0,
+    };
+    cartItems.forEach((productData: any) => {
+      billingDetails.price =
+        billingDetails.price + productData.price * productData.count;
+      billingDetails.discount =
+        (billingDetails.discount / 100) * productData.price * productData.count;
+      billingDetails.price >= 25
+        ? (billingDetails.delivery = 0)
+        : (billingDetails.delivery = 200);
+    });
+    return billingDetails;
   }
 }
