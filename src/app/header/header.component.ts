@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   categories: any;
   searchText: string = '';
   cartItemCount: any;
+  isSortMenuVisible: boolean = false;
+  criteria: any[] = ['Price(Low to High)'];
 
   constructor(
     private productService: ProductsService,
@@ -56,4 +58,11 @@ export class HeaderComponent implements OnInit {
     });
     return this.categories;
   }
+
+  showSortMenu() {
+    this.isSortMenuVisible = !this.isSortMenuVisible;
+  }
+
+  // Sort products by price
+  sortProducts(criteria: any) {}
 }

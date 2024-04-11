@@ -55,3 +55,7 @@ input {
   text-align: center;
   padding: 2px;
 }
+
+.mat-primary{
+  color: orangered;
+}
