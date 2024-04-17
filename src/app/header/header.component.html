@@ -1,37 +1,27 @@
 <nav class="header-container">
-  <!-- home routing -->
-  <a routerLink="home" class="link">
-    <mat-icon>home</mat-icon>
-    Shop
-  </a>
-
-  <!-- categories routing -->
-  <a routerLink="categories" class="link">
-    <mat-icon>reorder</mat-icon>
-    Categories
-  </a>
-
-  <!--Add product route-->
-  <a class="link add-product-container" (click)="productModal()">
-    <mat-icon>note_add</mat-icon>
-    Add Product
-  </a>
-
-  <!-- Cart Link -->
-  <div routerLink="cart" class="link">
-    <mat-icon>add_shopping_cart</mat-icon>
-    <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
+  <div class="main-icon">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon class="main-name">menu</mat-icon>
+    </button>
+    <a routerLink="home" class="main-name">Shop</a>
   </div>
 
-  <button mat-raised-button color="primary" (click)="showSortMenu()">Sort</button>
+  <!-- Sort Button -->
+  <!-- <mat-icon class="sort" (click)="showSortMenu()">sort</mat-icon>
   <div class="dropdown-container" *ngIf="isSortMenuVisible">
-    <div class="dropdown-list row">
-      <span class="dropdown-list-item" *ngFor="let criterion of criteria" (click)="sortProducts(criterion)">{{ criterion }}</span>
+    <div class="dropdown-list">
+      <span
+        class="dropdown-list-item"
+        *ngFor="let criterion of criteria"
+        (click)="sortProducts(criterion)"
+        >{{ criterion }}</span
+      >
     </div>
-  </div>
+  </div> -->
 
   <form #searchBox="ngForm">
     <div class="header-search">
+      <mat-icon>search</mat-icon>
       <input
         matInput
         class="search-box"
@@ -39,8 +29,162 @@
         type="text"
         name="searchText"
         [(ngModel)]="searchText"
+        (keyup)="searchProduct(searchText)"
       />
-      <!-- <mat-icon>search</mat-icon> -->
     </div>
   </form>
+
+  <div class="right-header-nav">
+    <div class="link">
+      <mat-icon>person_outline</mat-icon>
+      <a routerLink="profile" class="link">Account</a>
+    </div>
+
+    <!-- Cart Link -->
+    <div routerLink="cart" class="link">
+      <mat-icon>add_shopping_cart</mat-icon>
+      <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
+      Cart
+    </div>
+  </div>
 </nav>
+
+<mat-drawer-container class="sidebar">
+  <mat-drawer
+    opened="false"
+    mode="side"
+    style="width: 230px; background-color: #ffe6c6"
+    #drawer
+  >
+    <mat-nav-list style="padding: 15px">
+      <div class="side-nav">
+        <div>
+          <mat-list-item>
+            <a routerLink="home" class="link"><mat-icon>home</mat-icon>Home</a>
+          </mat-list-item>
+
+          <mat-list-item>
+            <div
+              class="add-product"
+              (click)="productModal()"
+              style="margin: auto"
+            >
+              <mat-icon>note_add</mat-icon>
+              Add Product
+            </div>
+          </mat-list-item>
+
+          <!-- Sort Menu -->
+          <div (click)="showSortMenu()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>sort</mat-icon>
+                Sort Products
+                <div style="margin-left: auto">
+                  <mat-icon>expand_more</mat-icon>
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="isSortMenuVisible">
+              <mat-list-item>
+                <div
+                  class="dropdown-list"
+                  *ngFor="let criterion of criteria"
+                  (click)="sortProducts(criterion)"
+                >
+                  {{ criterion }}
+                </div>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+
+          <!-- Price Filters -->
+          <div (click)="showPriceFilters()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>sort</mat-icon>
+                Price Filter
+                <div style="margin-left: auto">
+                  <mat-icon>expand_more</mat-icon>
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="isPriceFiltersVisible">
+              <mat-list-item>
+                <div
+                  class="dropdown-list"
+                  *ngFor="let priceFilter of priceFilters"
+                  (click)="filterProductsByPrice(priceFilter)"
+                >
+                  Upto {{ priceFilter * 100 | currency: 'Ksh ' }}
+                </div>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+
+          <!-- Categories Dropdown -->
+          <mat-list-item>
+            <a routerLink="categories" class="link">
+              <mat-icon>menu</mat-icon>
+              Categories
+            </a>
+          </mat-list-item>
+
+          <mat-list-item>
+            <a routerLink="home" class="link">
+              <mat-icon>person_outline</mat-icon>
+              Account
+            </a>
+          </mat-list-item>
+
+          <div (click)="toggleUserDropDownArrow()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>people</mat-icon>
+                User
+                <div style="margin-left: auto">
+                  <mat-icon
+                    [@indicatorRotate]="
+                      displayUserDropDown ? 'expanded' : 'collapsed'
+                    "
+                    >expand_more</mat-icon
+                  >
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="displayUserDropDown">
+              <mat-list-item>
+                <a
+                  routerLink="users"
+                  class="link"
+                  style="display: flex; justify-content: center"
+                >
+                  All Users
+                </a>
+              </mat-list-item>
+              <mat-list-item>
+                <a
+                  routerLink="/createuser"
+                  class="link"
+                  style="display: flex; justify-content: center"
+                  >Create user</a
+                >
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+        </div>
+        <div>
+          <mat-list-item>
+            <a routerLink="users" class="link">
+              <mat-icon>settings</mat-icon>
+              Admin
+            </a>
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

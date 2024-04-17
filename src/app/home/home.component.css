@@ -63,6 +63,7 @@
     padding-left: 10px;
     margin-top: 20px;
     margin-left: 30px;
+    color: black;
   }
   .view-all {
     color: blue;
@@ -88,5 +89,10 @@
 
 .product-price{
   background-color: white;
+  color: orangered;
+}
+
+.currency{
+  font-weight: bold;
   color: orangered;
 }

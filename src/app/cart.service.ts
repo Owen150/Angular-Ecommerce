@@ -70,7 +70,7 @@ export class CartService {
     });
   }
 
-  //Billing Details
+  //Billing Details - Called in Price Details Component
   getBilling(cartItems: any) {
     // A single object with various attributes
     let billingDetails = {
