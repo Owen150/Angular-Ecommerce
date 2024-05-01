@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   categoryId!: number;
-  categoriesData: { [key: string]: any } = {};
+  categoriesData: any;
+  searchText: any;
 
   constructor(
     private productService: ProductsService,
@@ -17,24 +18,48 @@ export class CategoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.categoriesData);
-    this.getCategoriesData();
+    this.getProductCategories();
+    this.sortProducts();
+    this.getSearchText();
+    this.getFilters();
   }
 
-  getCategoriesData() {
-    const categories = [
-      'jewelery',
-      'electronics',
-      "men's%20clothing",
-      "women's%20clothing",
-    ];
+  getProductCategories() {
+    this.productService.productCategorySubject.subscribe((category: any) => {
+      // Get All Products then Filter them by Category
+      this.productService.getAllProducts().subscribe((res) => {
+        this.categoriesData = res;
+        // Pass Category Value to the Product Service for Filtering
+        this.categoriesData =
+          this.productService.getFilteredProductsByCategory(category);
+        console.log(this.categoriesData);
+      });
+    });
+  }
 
-    categories.forEach((category) => {
-      this.productService.getProductsByCategory(category).subscribe((data) => {
-        if (!this.categoriesData.hasOwnProperty(category)) {
-          this.categoriesData[category] = [];
-        }
-        this.categoriesData[category] = data;
+  sortProducts() {
+    // Sort - getSortedProducts
+    this.productService.sortSubject.subscribe((sortCriterion: any) => {
+      this.categoriesData = this.productService.sortProducts(sortCriterion);
+    });
+  }
+
+  getSearchText() {
+    // Search Text
+    this.productService.searchSubject.subscribe((searchString: any) => {
+      this.searchText = searchString;
+    });
+  }
+
+  getFilters(){
+    // Filter by Price
+    // Get the priceFilter Value from the Product Service (Passed From the Header Component)
+    this.productService.priceFilterSubject.subscribe((price: any) => {
+      this.productService.getAllProducts().subscribe((res) => {
+        this.categoriesData = res;
+        // Pass this value i.e. Price, to the getFilteredProductsByPrice() method in the Product Service to return an array of the filteredProducts in the getAllProducts() method
+        this.categoriesData =
+          this.productService.getFilteredProductsByPrice(price);
       });
     });
   }

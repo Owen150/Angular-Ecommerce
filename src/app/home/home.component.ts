@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
@@ -12,10 +12,8 @@ export class HomeComponent implements OnInit {
   productData: any;
   categories!: string;
   id: any;
-  // Value from the Service
   searchText: any;
-
-  limitControl: any; // Initialize form input with a default limit value
+  limitControl: any;
 
   constructor(
     private productService: ProductsService,
@@ -24,25 +22,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
-    // Sort - getSortedProducts
-    this.productService.sortSubject.subscribe((sortCriterion: any) => {
-      this.productData = this.productService.sortProducts(sortCriterion);
-    });
-
-    // Filter by Price
-    // Get the priceFilter Value from the Product Service (Passed From the Header Component)
-    this.productService.priceFilterSubject.subscribe((price: any) => {
-      this.productService.getAllProducts().subscribe((res) => {
-        this.productData = res;
-        // Pass this value i.e. Price, to the getFilteredProductsByPrice() method in the Product Service to return an array of the filteredProducts in the getAllProducts() method
-        this.productData = this.productService.getFilteredProductsByPrice(price);
-      });
-    });
-
-    // Search Text
-    this.productService.searchSubject.subscribe((searchString: any) => {
-      this.searchText = searchString;
-    });
+    this.getSortedProducts();
+    this.getFilteredProducts();
+    this.getSearchedProduct();
   }
 
   getAllProducts() {
@@ -52,14 +34,33 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  navigateToProduct(id: any) {
-    this.router.navigate(['product', id]);
+  getSortedProducts() {
+    this.productService.sortSubject.subscribe((sortCriterion: any) => {
+      this.productData = this.productService.sortProducts(sortCriterion);
+    });
   }
 
-  getProductCategories() {
-    this.productService.getAllProductCategories().subscribe((data) => {
-      this.categories = data;
+  getFilteredProducts() {
+    // Get the priceFilter Value from the Product Service (Passed From the Header Component)
+    this.productService.priceFilterSubject.subscribe((price: any) => {
+      this.productService.getAllProducts().subscribe((res) => {
+        this.productData = res;
+        // Pass this value i.e. Price, to the getFilteredProductsByPrice() method in the Product Service to return an array of the filteredProducts in the getAllProducts() method
+        this.productData =
+          this.productService.getFilteredProductsByPrice(price);
+      });
     });
+  }
+
+  getSearchedProduct() {
+    // Search Text
+    this.productService.searchSubject.subscribe((searchString: any) => {
+      this.searchText = searchString;
+    });
+  }
+
+  navigateToProduct(id: any) {
+    this.router.navigate(['product', id]);
   }
 
   onSubmit(myForm: any) {

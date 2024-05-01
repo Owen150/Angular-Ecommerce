@@ -8,19 +8,20 @@ import { Observable, Subject, map } from 'rxjs';
 export class ProductsService {
   private baseURL = 'http://localhost:4000/products';
   private categoriesURL = 'https://fakestoreapi.com/products/categories';
-  private categoryURL = 'https://fakestoreapi.com/products/category';
 
   products: any[] = [];
-  sortCriterion: any;
   filteredProducts: any;
+
+  sortCriterion: any;
   sortSubject = new Subject();
-  // Search Text Variable
+
+  productCategory: any;
+  productCategorySubject = new Subject();
+
   searchText: any = '';
-  // Sending the searchText value to the home component via the searchSubject - Inter Component Communication
   searchSubject = new Subject();
-  // Price Filter Variable
+
   priceFilter: any;
-  // Sending the priceFilter value to the home component via the priceFilterSubject - Inter Component Communication
   priceFilterSubject = new Subject();
 
   constructor(private httpClient: HttpClient) {}
@@ -40,15 +41,6 @@ export class ProductsService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
 
-  getAllProductCategories(): Observable<any> {
-    return this.httpClient.get<any>(this.categoriesURL);
-  }
-
-  getProductsByCategory(category: string): Observable<any> {
-    let url = `${this.categoryURL}/${category}`;
-    return this.httpClient.get<any>(url);
-  }
-
   createProduct(product: any, category: string): Observable<Object> {
     product.category = category;
     return this.httpClient.post(`${this.baseURL}`, product);
@@ -62,7 +54,37 @@ export class ProductsService {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 
-  // Get Sort Criterion i.e Low to High or Vice Versa
+  // Get All Product Categories from the products using a flatMap 
+  // Flattening Nested Observables
+  getAllCategories() {
+    let productCategory = this.products.flatMap((product: any) => {
+      return product.category;
+    });
+    // Return an Array of Categories
+    let categories = Array.from(new Set(productCategory));
+    return categories;
+  }
+
+  // Get the selected product category value from the Header Component
+  // Pass value to the productCategorySubject
+  getProductCategory(category: any) {
+    this.productCategory = category;
+    this.productCategorySubject.next(this.productCategory);
+  }
+
+  // Get Category Value from the Categories Component
+  // Displays Category Items
+  getFilteredProductsByCategory(category: any) {
+    return this.filteredProducts = this.products.filter((product: any) => {
+      return product.category.includes(category);
+    })
+  }
+
+  getAllProductCategories(): Observable<any> {
+    return this.httpClient.get<any>(this.categoriesURL);
+  }
+
+  // Get Sort Criterion i.e Low to High or Vice-versa
   getSortCriterion(criterion: any) {
     this.sortCriterion = criterion;
     this.sortSubject.next(this.sortCriterion);
@@ -105,16 +127,22 @@ export class ProductsService {
     this.priceFilterSubject.next(this.priceFilter);
   }
 
-  // Received From the Home Component
+  // Get Price Value from the Home Component
+  // Displays Filtered Products by Price
   getFilteredProductsByPrice(price: any) {
-    return (this.filteredProducts = this.products.filter((product: any) => {
+    return this.filteredProducts = this.products.filter((product: any) => {
       return product.price <= price;
-    }));
+    });
   }
 
   // Pass the searchText value from the header component to the service
   getSearchString(searchText: any) {
     this.searchText = searchText;
     this.searchSubject.next(this.searchText);
+  }
+
+  // Analytics Component
+  showData(){
+    return this.httpClient.get(this.baseURL);
   }
 }
