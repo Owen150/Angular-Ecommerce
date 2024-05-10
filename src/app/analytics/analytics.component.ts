@@ -5,14 +5,15 @@ import { ProductsService } from '../products.service';
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.css'],
+  styleUrls: ['./analytics.component.css']
 })
-export class AnalyticsComponent implements OnInit {
+export class AnalyticsComponent implements OnInit{
   productData: any;
   productPrice: any[] = [];
   productCategory: any[] = [];
   productRate: any[] = [];
   productCount: any[] = [];
+  productTitle: any[] = [];
 
   constructor(private productService: ProductsService) {}
 
@@ -25,6 +26,7 @@ export class AnalyticsComponent implements OnInit {
           this.productPrice.push(this.productData[i].price);
           this.productRate.push(this.productData[i].rating.rate);
           this.productCount.push(this.productData[i].rating.count);
+          this.productTitle.push(this.productData[i].title);
         }
         this.showChartData(
           'line',
@@ -41,13 +43,13 @@ export class AnalyticsComponent implements OnInit {
         this.showChartData(
           'pie',
           'pieChart',
-          this.productRate,
+          this.productTitle,
           this.productCount
         );
         this.showChartData(
           'doughnut',
           'doughnutChart',
-          this.productRate,
+          this.productTitle,
           this.productPrice
         );
       }

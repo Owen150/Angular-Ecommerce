@@ -1,18 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 22,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
-    },
-    {
       "id": "3",
       "title": "Mens Cotton Jacket",
       "price": 54,
@@ -41,7 +29,7 @@
     {
       "id": "5",
       "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-      "price": 563,
+      "price": 50,
       "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
@@ -325,6 +313,86 @@
         "rate": 68,
         "count": 48
       }
+    },
+    {
+      "id": "97b2",
+      "title": "Form  Test",
+      "price": 23,
+      "description": "Form Test",
+      "category": "men's clothing",
+      "image": "https://images.timberland.com/is/image/timberland/10061713-HERO?hei=650&wid=650&qlt=50&resMode=sharp2&op_usm=0.9,1.0,8,0",
+      "rating": {
+        "rate": 5,
+        "count": 99
+      }
+    }
+  ],
+  "user": [
+    {
+      "id": "b604",
+      "username": "admin",
+      "password": "oweno",
+      "name": "Michael Owen",
+      "email": "michaeloduor50@gmail.com",
+      "phone": "0715836219",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "f557",
+      "username": "qodih",
+      "password": "Pa$$w0rd!",
+      "name": "Gage Campos",
+      "email": "zilowimy@mailinator.com",
+      "phone": "+1 (468) 613-7036",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "2514",
+      "username": "Michael 8",
+      "password": "11",
+      "name": "Michael O Oduor",
+      "email": "michaeloduor50@gmail.com",
+      "phone": "999777",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "d053",
+      "username": "pyqivubiz",
+      "password": "12345",
+      "name": "Magee Herrera",
+      "email": "pajutu@mailinator.com",
+      "phone": "+1 (949) 941-8204",
+      "gender": "other",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "b9c6",
+      "username": "ducufitev",
+      "password": "Pa$$w0rd!",
+      "name": "Sandra Gillespie",
+      "email": "ladiwoj@mailinator.com",
+      "phone": 744,
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "3386",
+      "username": "kuzyt",
+      "password": "Pa$$w0rd!",
+      "name": "Doris Mccray",
+      "email": "lebidabap@mailinator.com",
+      "phone": 809,
+      "gender": "female",
+      "role": "user",
+      "status": true
     }
   ]
 }

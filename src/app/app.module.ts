@@ -8,18 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
-import { CartItemComponent } from './cart-item/cart-item.component';
-import { PriceDetailsComponent } from './price-details/price-details.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
-import { SearchPipe } from './search.pipe';
 
 /*Angular imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -35,21 +27,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { UserReducer } from './User/User.Reducer';
+import { UserEffect } from './User/User.Effects';
+import { AppEffects } from './Common/App.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ProductComponent,
     HeaderComponent,
-    CategoriesComponent,
     CreateProductComponent,
     DeleteConfirmationComponent,
-    CartComponent,
-    CartItemComponent,
-    PriceDetailsComponent,
-    CheckoutComponent,
-    SearchPipe,
-    AnalyticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,9 +59,11 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatSidenavModule,
+    MatSidenavModule, 
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    StoreModule.forRoot({user:UserReducer}),
+    EffectsModule.forRoot([UserEffect, AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent],

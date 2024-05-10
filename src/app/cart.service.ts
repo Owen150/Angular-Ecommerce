@@ -7,9 +7,11 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 @Injectable({
   providedIn: 'root',
 })
+
 export class CartService {
   cartProducts: any[] = [];
   cartSubject = new Subject();
+  productDeletedSubject = new Subject();
 
   constructor(private dialog: MatDialog) {}
 
@@ -22,7 +24,6 @@ export class CartService {
     return this.cartProducts;
   }
 
-  //Cart Price Details - Used In CartItem Component
   getPriceDetailsInCartItem(product: any) {
     let priceDetails = {
       price: product.price * product.count
@@ -50,7 +51,6 @@ export class CartService {
     this.cartSubject.next(this.cartProducts);
   }
 
-  //Change this to ngMaterial dialog
   removeItemFromCart(product: any) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       data: { product }
@@ -65,6 +65,8 @@ export class CartService {
           this.cartProducts.splice(index, 1);
           // Sending the updated cartProduct value/s
           this.cartSubject.next(this.cartProducts);
+          // Emitting event indicating successful deletion
+          this.productDeletedSubject.next(this.cartProducts);
         }
       }
     });
@@ -87,5 +89,10 @@ export class CartService {
         : (billingDetails.delivery = 5);
     });
     return billingDetails;
+  }
+
+  isProductInCart(product: any): boolean {
+    // Checks if the product is already in the cart
+    return this.cartProducts.some(item => item.id === product.id);
   }
 }
