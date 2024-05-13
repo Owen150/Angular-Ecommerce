@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserService } from '../Services/user.service';
-import { beginLogin, beginRegister } from './User.action';
+import {
+  beginLogin,
+  beginRegister,
+  duplicateUser,
+  duplicateUserSuccess,
+} from './User.action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { showalert } from '../Common/App.action';
@@ -31,6 +36,37 @@ export class UserEffect {
             of(
               showalert({
                 message: 'User Registerion Failed due to :.' + _error.message,
+                resulttype: 'fail',
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  _duplicateuser = createEffect(() =>
+    this.action$.pipe(
+      ofType(duplicateUser),
+      switchMap((action) => {
+        return this.userService.duplicateUserName(action.username).pipe(
+          switchMap((data) => {
+            if (data.length > 0) {
+              return of(
+                duplicateUserSuccess({ isDuplicate: true }),
+                showalert({
+                  message: 'Username Already Exists.',
+                  resulttype: 'fail',
+                })
+              );
+            } else {
+              return of(duplicateUserSuccess({ isDuplicate: false }));
+            }
+          }),
+          catchError((_error) =>
+            of(
+              showalert({
+                message: 'Registration Failed due to :.' + _error.message,
                 resulttype: 'fail',
               })
             )

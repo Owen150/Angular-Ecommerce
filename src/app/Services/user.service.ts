@@ -20,7 +20,7 @@ export class UserService {
     return this.httpClient.get<Userinfo[]>(this.baseURL + '?username=' + userdata.username + '&password=' + userdata.password);
   }
 
-  setUserToLoaclStorage(userdata: Userinfo) {
-    localStorage.setItem('userdata', JSON.stringify(userdata))
+  duplicateUserName(username: string) {
+    return this.httpClient.get<Userinfo[]>(this.baseURL + '?username=' + username );
   }
 }
