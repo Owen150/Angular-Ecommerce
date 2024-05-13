@@ -11,8 +11,6 @@ export interface Users{
     status: boolean
 }
 
-export interface UserModel extends EntityState<Users>{}
-
 export interface Usercred{
     username:string,
     password:string
@@ -26,3 +24,5 @@ export interface Userinfo{
     role:string,
     status:boolean
 }
+
+export interface UserModel extends EntityState<Users>{}

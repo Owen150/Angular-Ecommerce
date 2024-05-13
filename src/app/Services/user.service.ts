@@ -15,6 +15,7 @@ export class UserService {
     return this.httpClient.post(this.baseURL, userdata);
   }
 
+  // Custom Login URL
   userLogin(userdata: Usercred): Observable<Userinfo[]> {
     return this.httpClient.get<Userinfo[]>(this.baseURL + '?username=' + userdata.username + '&password=' + userdata.password);
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserService } from '../Services/user.service';
-import { beginLogin, beginRegister, fetchmenu } from './User.action';
+import { beginLogin, beginRegister } from './User.action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { showalert } from '../Common/App.action';
@@ -43,31 +43,28 @@ export class UserEffect {
   _userlogin = createEffect(() =>
     this.action$.pipe(
       ofType(beginLogin),
-      switchMap((action) => {
+      exhaustMap((action) => {
         return this.userService.userLogin(action.usercred).pipe(
-          switchMap((data: Userinfo[]) => {
+          map((data) => {
             if (data.length > 0) {
               const _userdata = data[0];
-              console.log(data);
               if (_userdata.status === true) {
-                this.userService.setUserToLoaclStorage(_userdata);
-                this.router.navigate(['']);
-                return of(
-                  fetchmenu({ userrole: _userdata.role }),
-                  showalert({ message: 'Login success.', resulttype: 'pass' })
-                );
+                this.router.navigate(['home']);
+                return showalert({
+                  message: 'Login Successful.',
+                  resulttype: 'pass',
+                });
               } else {
-                return of(
-                  showalert({ message: 'InActive User.', resulttype: 'fail' })
-                );
+                return showalert({
+                  message: 'Inactive User.',
+                  resulttype: 'fail',
+                });
               }
             } else {
-              return of(
-                showalert({
-                  message: 'Login Failed: Invalid credentials.',
-                  resulttype: 'fail',
-                })
-              );
+              return showalert({
+                message: 'Login Failed. Invalid Credentials',
+                resulttype: 'fail',
+              });
             }
           }),
           catchError((_error) =>

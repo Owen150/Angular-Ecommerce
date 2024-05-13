@@ -12,7 +12,7 @@ export class AppEffects {
     this.$action.pipe(
       ofType(showalert),
       exhaustMap((action) => {
-        return this.Shownackbaralert(action.message, action.resulttype)
+        return this.Showsnackbaralert(action.message, action.resulttype)
           .afterDismissed()
           .pipe(
             map(() => {
@@ -23,7 +23,7 @@ export class AppEffects {
     )
   );
 
-  Shownackbaralert(message: string, resulttype: string = 'fail') {
+  Showsnackbaralert(message: string, resulttype: string = 'fail') {
     let _class = resulttype == 'pass' ? 'green-snackbar' : 'red-snackbar';
     return this._snackbar.open(message, 'OK', {
       verticalPosition: 'top',
