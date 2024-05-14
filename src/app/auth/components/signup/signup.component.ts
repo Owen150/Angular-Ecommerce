@@ -65,7 +65,12 @@ export class SignupComponent {
     const username = this.registerForm.value.username as string;
     if (username != '') {
       this.store.dispatch(duplicateUser({ username: username }));
-      this.store.select(isDuplicateUser).subscribe((item) => {});
+      this.store.select(isDuplicateUser).subscribe((item) => {
+        const isExist = item;
+        if(isExist){
+          this.registerForm.controls['username'].reset();
+        }
+      });
     }
   }
 }

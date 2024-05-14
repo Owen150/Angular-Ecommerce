@@ -9,6 +9,7 @@
         <mat-label>Username</mat-label>
         <input
           matInput
+          (blur)="duplicateUser()"
           type="text"
           required
           formControlName="username"
