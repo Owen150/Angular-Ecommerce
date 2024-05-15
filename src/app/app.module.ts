@@ -8,9 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './Components/header/header.component';
 import { ProductComponent } from './product/product.component';
-import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { DeleteConfirmationComponent } from './Components/delete-confirmation/delete-confirmation.component';
 
 /*Angular imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -32,6 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserReducer } from './User/User.Reducer';
 import { UserEffect } from './User/User.Effects';
 import { AppEffects } from './Common/App.effects';
+import { AnalyticsComponent } from './Components/analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AppEffects } from './Common/App.effects';
     ProductComponent,
     HeaderComponent,
     DeleteConfirmationComponent,
+    AnalyticsComponent,
   ],
   imports: [
     BrowserModule,

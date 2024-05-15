@@ -4,7 +4,7 @@ import { ProductsService } from '../products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../home/components/create-product/create-product.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import { DeleteConfirmationComponent } from '../Components/delete-confirmation/delete-confirmation.component';
 import { CartService } from '../cart.service';
 
 @Component({

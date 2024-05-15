@@ -11,6 +11,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // Register new user
   userRegistration(userdata: Users){
     return this.httpClient.post(this.baseURL, userdata);
   }
@@ -20,14 +21,17 @@ export class UserService {
     return this.httpClient.get<Userinfo[]>(this.baseURL + '?username=' + userdata.username + '&password=' + userdata.password);
   }
 
+  // Check for duplicate user registration
   duplicateUserName(username: string) {
     return this.httpClient.get<Userinfo[]>(this.baseURL + '?username=' + username );
   }
 
+  // Save user data to local storage
   saveUserToLocalStorage(userdata: Userinfo) {
     localStorage.setItem('userdata', JSON.stringify(userdata))
   }
 
+  // Get user data from local storage upon successful login
   getUserDataFromStrorage(){
     let _obj:Userinfo = {
       id: 0,

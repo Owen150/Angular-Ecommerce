@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { ProductsService } from '../products.service';
+import { ProductsService } from 'src/app/products.service';
 
 @Component({
   selector: 'app-analytics',
