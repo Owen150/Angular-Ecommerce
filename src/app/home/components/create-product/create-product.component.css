@@ -1,0 +1,26 @@
+.title{
+    h1{
+      text-align: center;
+    }
+  }
+  .content{
+    padding-top: 5px;
+  }
+  
+  .row{
+    display: flex;
+    gap: 10px;
+  
+    mat-form-field{
+      width: 100%;
+    }
+  }
+  
+  .action-buttons{
+    justify-content: space-around;
+    margin-bottom: 5px;
+  }
+  
+  .error{
+    color: red;
+  }

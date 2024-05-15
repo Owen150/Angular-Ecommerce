@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 import { SearchPipe } from '../search.pipe';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CategoriesComponent } from './components/categories/categories.component';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [HomeComponent, SearchPipe, CategoriesComponent],
+  declarations: [HomeComponent, SearchPipe, CategoriesComponent, CreateProductComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -22,7 +25,11 @@ import { CategoriesComponent } from './components/categories/categories.componen
     MatCardModule,
     MatIconModule,
     FormsModule,
-    MatInputModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonModule
   ],
 })
 export class HomeModule {}

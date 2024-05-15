@@ -86,7 +86,8 @@ export class UserEffect {
               const _userdata = data[0];
               if (_userdata.status === true) {
                 this.userService.saveUserToLocalStorage(_userdata);
-                this.router.navigate(['home']);
+                // this.router.navigate(['home']);
+                this.router.navigate(['cart']);
                 return showalert({
                   message: 'Login Successful.',
                   resulttype: 'pass',

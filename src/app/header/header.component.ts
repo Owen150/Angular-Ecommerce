@@ -14,7 +14,7 @@ import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
 
 /*Component imports */
-import { CreateProductComponent } from '../create-product/create-product.component';
+import { CreateProductComponent } from '../home/components/create-product/create-product.component';
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';

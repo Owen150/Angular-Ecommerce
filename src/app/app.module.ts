@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
-import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 /*Angular imports */
@@ -39,7 +38,6 @@ import { AppEffects } from './Common/App.effects';
     AppComponent,
     ProductComponent,
     HeaderComponent,
-    CreateProductComponent,
     DeleteConfirmationComponent,
   ],
   imports: [

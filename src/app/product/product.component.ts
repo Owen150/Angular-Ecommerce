@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateProductComponent } from '../create-product/create-product.component';
+import { CreateProductComponent } from '../home/components/create-product/create-product.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { CartService } from '../cart.service';
