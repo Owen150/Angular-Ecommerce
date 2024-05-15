@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Usercred } from 'src/app/Model/User.model';
 import { beginLogin } from 'src/app/User/User.action';
@@ -10,8 +11,8 @@ import { beginLogin } from 'src/app/User/User.action';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  
-  constructor(private builder: FormBuilder, private store: Store){}
+
+  constructor(private builder: FormBuilder, private store: Store, private router: Router){}
   
   ngOnInit(): void {
     localStorage.clear();
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit{
         username: this.loginForm.value.username as string,
         password: this.loginForm.value.password as string
       }
-      this.store.dispatch(beginLogin({ usercred: _obj }))
+      this.store.dispatch(beginLogin({ usercred: _obj }));
     }
   }
 
