@@ -10,7 +10,7 @@ import { authGuard } from '../guard/auth.guard';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'categories', component: CategoriesComponent },
-  { path: 'create-product', component: CreateProductComponent}
+  { path: 'create-product', component: CreateProductComponent }
 ];
 
 @NgModule({

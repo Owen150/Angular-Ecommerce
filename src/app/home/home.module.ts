@@ -6,7 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
-import { SearchPipe } from '../search.pipe';
+import { SearchPipe } from '../Pipes/search.pipe';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';

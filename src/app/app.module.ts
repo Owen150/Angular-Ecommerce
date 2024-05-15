@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*Component imports */
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
-import { ProductComponent } from './product/product.component';
+import { ProductComponent } from './Components/product/product.component';
 import { DeleteConfirmationComponent } from './Components/delete-confirmation/delete-confirmation.component';
 
 /*Angular imports */
