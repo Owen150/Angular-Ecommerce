@@ -33,6 +33,7 @@ import { UserReducer } from './User/User.Reducer';
 import { UserEffect } from './User/User.Effects';
 import { AppEffects } from './Common/App.effects';
 import { AnalyticsComponent } from './Components/analytics/analytics.component';
+import { UserlistComponent } from './Components/userlist/userlist.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AnalyticsComponent } from './Components/analytics/analytics.component';
     HeaderComponent,
     DeleteConfirmationComponent,
     AnalyticsComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,

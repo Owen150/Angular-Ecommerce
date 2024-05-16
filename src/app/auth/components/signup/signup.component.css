@@ -1,28 +1,50 @@
-mat-card{
-    margin: 2%;
-    text-align: left;
-    width: 50%;
-    margin-left: 25%;
-    border: 1px solid #ccc;
+mat-card {
+  margin: 2%;
+  text-align: left;
+  width: 50%;
+  margin-left: 25%;
+  border: 1px solid #ccc;
 }
 
 .mat-mdc-form-field {
-    width: 98%;
-    margin: 1%;
+  width: 98%;
+  margin: 1%;
 }
-.mat-50{
-    width: 48%;
-    margin: 1%;
+.mat-50 {
+  width: 48%;
+  margin: 1%;
+  height: 70px;
 }
-.div-50{
-    width: 48%;
-    margin: 1%;
-    display: inline;
+.div-50 {
+  width: 48%;
+  margin: 1%;
+  display: inline;
 }
 
-button{
-    margin: 2px;
+button {
+  margin: 2px;
 }
-.mat-mdc-raised-button{
-    width: 100%;
+.mat-mdc-raised-button {
+  width: 100%;
+}
+.error {
+  color: red;
+}
+
+.radio {
+  display: flex;
+  justify-content: space-around;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.heading h1 {
+  margin: 0;
 }

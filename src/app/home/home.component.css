@@ -4,10 +4,11 @@
     flex-direction: column;
     position: relative;
     height: max-content;
+    
     .mat-card-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: space-evenly;
   
       .example-card {
         margin-top: 15px;
