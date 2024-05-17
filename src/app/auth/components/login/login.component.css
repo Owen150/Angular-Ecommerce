@@ -3,12 +3,12 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  height: 80vh;
+  margin-top: 20px;
 }
 
 mat-card {
   margin: 2%;
-  width: 130%;
+  width: 100%;
   border: 1px solid #ccc;
   justify-content: center;
 }
@@ -48,11 +48,9 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100%;
   margin-bottom: 10px;
 }
 
 .heading h1 {
   margin: 0;
-  text-align: center;
 }

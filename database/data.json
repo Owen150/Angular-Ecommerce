@@ -406,5 +406,59 @@
       "role": "user",
       "status": true
     }
+  ],
+  "role":[
+    {
+      "code": "admin",
+      "name": "Admin"
+    },
+    {
+      "code": "manager",
+      "name": "Manager"
+    },
+    {
+      "code": "user",
+      "name": "User"
+    }
+  ],
+  "menu":[
+    {
+      "code": "home",
+      "name": "Home"
+    },
+    {
+      "code": "customer",
+      "name": "Customer"
+    },
+    {
+      "code": "user",
+      "name": "User"
+    }
+  ],
+  "roleaccess":[
+    {
+      "role": "admin",
+      "menu": "Home"
+    },
+    {
+      "role": "admin",
+      "menu": "Customer"
+    },
+    {
+      "role": "admin",
+      "menu": "User"
+    },
+    {
+      "role": "manager",
+      "menu": "Home"
+    },
+    {
+      "role": "manager",
+      "menu": "Customer"
+    },
+    {
+      "role": "user",
+      "menu": "Home"
+    }
   ]
 }

@@ -28,7 +28,26 @@ export interface Userinfo {
   status: boolean;
 }
 
-// Check for duplicate user registration
+// Roles
+export interface Roles{
+  code: string,
+  name: string
+}
+
+// Menus
+export interface Menus{
+  code: string,
+  name: string
+}
+
+// Role Access
+export interface RoleAccess{
+  role: string,
+  menu: string
+}
+
+// Initialize state properties
 export interface UserModel extends EntityState<Users> {
   isDuplicate: boolean;
+  menuList: RoleAccess[]
 }

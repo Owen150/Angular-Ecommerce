@@ -6,6 +6,8 @@ import {
   beginRegister,
   duplicateUser,
   duplicateUserSuccess,
+  fetchMenu,
+  fetchMenuSuccess,
 } from './User.action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
@@ -86,8 +88,7 @@ export class UserEffect {
               const _userdata = data[0];
               if (_userdata.status === true) {
                 this.userService.saveUserToLocalStorage(_userdata);
-                // this.router.navigate(['home']);
-                this.router.navigate(['cart']);
+                this.router.navigate(['home']);
                 return showalert({
                   message: 'Login Successful.',
                   resulttype: 'pass',
@@ -109,6 +110,27 @@ export class UserEffect {
             of(
               showalert({
                 message: 'Login Failed due to :.' + _error.message,
+                resulttype: 'fail',
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  _loadmenubyrole = createEffect(() =>
+    this.action$.pipe(
+      ofType(fetchMenu),
+      exhaustMap((action) => {
+        return this.userService.getMenuByRole(action.userrole).pipe(
+          map((data) => {
+            return fetchMenuSuccess({menuList: data});
+          }),
+          catchError((_error) =>
+            of(
+              showalert({
+                message: 'Failed to fetch the Menu List.',
                 resulttype: 'fail',
               })
             )

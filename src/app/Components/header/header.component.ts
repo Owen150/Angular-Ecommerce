@@ -19,6 +19,9 @@ import { CreateProductComponent } from '../../home/components/create-product/cre
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { RoleAccess } from 'src/app/Model/User.model';
+import { getMenuByRole } from 'src/app/User/User.Selector';
 
 @Component({
   selector: 'app-header',
@@ -48,17 +51,22 @@ export class HeaderComponent implements OnInit, DoCheck {
   categories: any;
   isCategoriesVisible: boolean = false;
   isMenuVisible = false;
+  menuList!: RoleAccess[];
 
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
     this.getCartItemCount();
     this.getProductCategories();
+    this.store.select(getMenuByRole).subscribe(item => {
+      this.menuList = item;
+    })
   }
 
   ngDoCheck(): void {

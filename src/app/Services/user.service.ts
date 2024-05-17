@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usercred, Userinfo, Users } from '../Model/User.model';
+import { RoleAccess, Usercred, Userinfo, Users } from '../Model/User.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -22,8 +22,14 @@ export class UserService {
   }
 
   // Check for duplicate user registration
-  duplicateUserName(username: string) {
+  duplicateUserName(username: string): Observable<Userinfo[]> {
     return this.httpClient.get<Userinfo[]>(this.baseURL + '?username=' + username );
+  }
+
+  // Role based Menu Access
+  // Function takes the userrole and returns a list of menus based on the role i.e RoleAccess[] 
+  getMenuByRole(userrole: string): Observable<RoleAccess[]>{
+    return this.httpClient.get<RoleAccess[]>('http://localhost:4000/roleaccess?role=' + userrole)
   }
 
   // Save user data to local storage
