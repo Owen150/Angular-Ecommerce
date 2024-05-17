@@ -19,7 +19,7 @@ export const beginLogin=createAction(BEGIN_LOGIN,props<{usercred:Usercred}>());
 
 // Checking the username variable for duplicate user registration - username is from the model
 export const duplicateUser=createAction(DUPLICATE_USER,props<{username:string}>());
-// Once the action is completed, we will get the information that we are going to set in our state.
+// Once the action is completed/successful, we will get the information that we are going to set in our state.
 export const duplicateUserSuccess=createAction(DUPLICATE_USER_SUCC,props<{isDuplicate:boolean}>());
 
 export const fetchMenu=createAction(FETCH_MENU,props<{userrole:string}>());
