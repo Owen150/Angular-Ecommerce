@@ -47,7 +47,7 @@
 
       <mat-card-actions class="div-50">
         <div>
-          <button mat-raised-button type="submit" color="primary">Login</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid">Login</button>
         </div>
 
         <div>

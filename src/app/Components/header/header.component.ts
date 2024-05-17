@@ -1,5 +1,5 @@
 /*Angular imports */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 import {
   animate,
@@ -18,6 +18,7 @@ import { CreateProductComponent } from '../../home/components/create-product/cre
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -34,7 +35,7 @@ import { MatDialog } from '@angular/material/dialog';
     ]),
   ],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
   id: any;
   searchText: any = '';
   cartItemCount: any;
@@ -46,11 +47,13 @@ export class HeaderComponent implements OnInit {
   priceFilters = [100, 500, 1000];
   categories: any;
   isCategoriesVisible: boolean = false;
+  isMenuVisible = false;
 
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -58,14 +61,23 @@ export class HeaderComponent implements OnInit {
     this.getProductCategories();
   }
 
-  getCartItemCount(){
+  ngDoCheck(): void {
+    const currentRoute = this.router.url;
+    if (currentRoute === '/auth/login' || currentRoute === '/auth/signup') {
+      this.isMenuVisible = false;
+    } else {
+      this.isMenuVisible = true;
+    }
+  }
+
+  getCartItemCount() {
     // Displaying the Cart Item Count on the Navbar
     this.cartService.cartSubject.subscribe((cartItems: any) => {
       this.cartItemCount = cartItems.length;
     });
-  };
+  }
 
-  getCategories(){
+  getCategories() {
     // Displaying the Various Categories on the Side Navigation
     this.productService.getAllProducts().subscribe((res) => {
       this.categories = this.productService.getAllCategories();

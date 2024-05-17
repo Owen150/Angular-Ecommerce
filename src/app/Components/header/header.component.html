@@ -1,158 +1,167 @@
-<nav class="header-container">
-  <div class="main-icon">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon class="main-name">menu</mat-icon>
-    </button>
-    <a routerLink="home" class="main-name">Shop</a>
-  </div>
-
-  <form #searchBox="ngForm">
-    <div class="header-search">
-      <mat-icon>search</mat-icon>
-      <input
-        matInput
-        class="search-box"
-        placeholder="Search Product"
-        type="text"
-        name="searchText"
-        [(ngModel)]="searchText"
-        (keyup)="searchProduct(searchText)"
-      />
-    </div>
-  </form>
-
-  <div class="right-header-nav">
-    <div routerLink="auth/login" class="link">
-      <mat-icon>person_outline</mat-icon>
-      <a class="link">Logout</a>
+<div *ngIf="isMenuVisible">
+  <mat-toolbar class="header-container">
+    <div class="main-icon">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="home" class="main-name">Shop</a>
     </div>
 
-    <!-- Cart Link -->
-    <div routerLink="cart" class="link">
-      <mat-icon>add_shopping_cart</mat-icon>
-      <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
+    <form #searchBox="ngForm">
+      <div class="header-search">
+        <mat-icon>search</mat-icon>
+        <input
+          matInput
+          class="search-box"
+          placeholder="Search Product"
+          type="text"
+          name="searchText"
+          [(ngModel)]="searchText"
+          (keyup)="searchProduct(searchText)"
+        />
+      </div>
+    </form>
+
+    <div class="right-header-nav">
+      <div routerLink="auth/login" class="link">
+        <mat-icon>person_outline</mat-icon>
+        <a class="link">Logout</a>
+      </div>
+
+      <!-- Cart Link -->
+      <div routerLink="cart" class="link">
+        <mat-icon>add_shopping_cart</mat-icon>
+        <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
+      </div>
     </div>
-  </div>
-</nav>
+  </mat-toolbar>
 
-<mat-drawer-container class="sidebar">
-  <mat-drawer
-    opened="false"
-    mode="side"
-    style="width: 230px; background-color: #ffe6c6"
-    #drawer
-  >
-    <mat-nav-list style="margin-left: 8px">
-      <div class="side-nav">
-        <div>
-          <mat-list-item>
-            <a routerLink="home" class="link"><mat-icon>home</mat-icon>Home</a>
-          </mat-list-item>
-
-          <mat-list-item>
-            <div
-              class="add-product"
-              (click)="productModal()"
-              style="margin: auto"
-            >
-              <mat-icon>note_add</mat-icon>
-              Add Product
-            </div>
-          </mat-list-item>
-
-          <!-- Sort Menu -->
-          <div (click)="showSortMenu()">
+  <mat-drawer-container class="sidebar" autosize>
+    <mat-drawer
+      opened="false"
+      mode="side"
+      style="width: 230px; background-color: #ffe6c6"
+      #drawer
+    >
+      <mat-nav-list style="margin-left: 8px">
+        <div class="side-nav">
+          <div>
             <mat-list-item>
-              <a class="link">
-                <mat-icon>sort</mat-icon>
-                Sort Products
-                <div style="margin-left: auto">
-                  <mat-icon>expand_more</mat-icon>
-                </div>
-              </a>
+              <a routerLink="home" class="link"
+                ><mat-icon>home</mat-icon>Home</a
+              >
             </mat-list-item>
-            <mat-nav-list *ngIf="isSortMenuVisible">
-              <div class="sort-products-list">
+
+            <mat-list-item>
+              <div
+                class="add-product"
+                (click)="productModal()"
+                style="margin: auto"
+              >
+                <mat-icon>note_add</mat-icon>
+                Add Product
+              </div>
+            </mat-list-item>
+
+            <!-- Sort Menu -->
+            <div (click)="showSortMenu()">
+              <mat-list-item>
+                <a class="link">
+                  <mat-icon>sort</mat-icon>
+                  Sort Products
+                  <div style="margin-left: auto">
+                    <mat-icon>expand_more</mat-icon>
+                  </div>
+                </a>
+              </mat-list-item>
+              <mat-nav-list *ngIf="isSortMenuVisible">
+                <div class="sort-products-list">
+                  <mat-list-item
+                    *ngFor="let criterion of criteria"
+                    class="dropdown-list"
+                    (click)="sortProducts(criterion)"
+                  >
+                    <P class="criterion">{{ criterion }}</P>
+                  </mat-list-item>
+                </div>
+              </mat-nav-list>
+            </div>
+
+            <!-- Price Filters -->
+            <div (click)="showPriceFilters()">
+              <mat-list-item>
+                <a class="link">
+                  <mat-icon>sort</mat-icon>
+                  Price Filter
+                  <div style="margin-left: auto">
+                    <mat-icon>expand_more</mat-icon>
+                  </div>
+                </a>
+              </mat-list-item>
+            </div>
+            <mat-nav-list *ngIf="isPriceFiltersVisible">
+              <div class="price-filter-list">
                 <mat-list-item
-                  *ngFor="let criterion of criteria"
+                  *ngFor="let priceFilter of priceFilters"
                   class="dropdown-list"
-                  (click)="sortProducts(criterion)"
+                  (click)="filterProductsByPrice(priceFilter)"
                 >
-                  <P class="criterion">{{ criterion }}</P>
+                  <P class="price-filter"
+                    >Upto {{ priceFilter * 100 | currency : "Ksh " }}</P
+                  >
                 </mat-list-item>
               </div>
             </mat-nav-list>
-          </div>
 
-          <!-- Price Filters -->
-          <div (click)="showPriceFilters()">
-            <mat-list-item>
-              <a class="link">
-                <mat-icon>sort</mat-icon>
-                Price Filter
-                <div style="margin-left: auto">
-                  <mat-icon>expand_more</mat-icon>
-                </div>
-              </a>
-            </mat-list-item>
-          </div>
-          <mat-nav-list *ngIf="isPriceFiltersVisible">
-            <div class="price-filter-list">
-              <mat-list-item
-                *ngFor="let priceFilter of priceFilters"
-                class="dropdown-list"
-                (click)="filterProductsByPrice(priceFilter)"
-              >
-                <P class="price-filter"
-                  >Upto {{ priceFilter * 100 | currency : "Ksh " }}</P
+            <!-- Categories Dropdown -->
+            <div (click)="showCategories()">
+              <mat-list-item>
+                <a routerLink="home/categories" class="link">
+                  <mat-icon>menu</mat-icon>
+                  Categories
+                  <div style="margin-left: auto">
+                    <mat-icon>expand_more</mat-icon>
+                  </div>
+                </a>
+              </mat-list-item>
+            </div>
+            <mat-nav-list *ngIf="isCategoriesVisible">
+              <div class="price-filter-list">
+                <mat-list-item
+                  *ngFor="let category of categories"
+                  class="dropdown-list"
+                  (click)="filterProductsByCategory(category)"
                 >
-              </mat-list-item>
-            </div>
-          </mat-nav-list>
+                  <p class="price-filter">{{ category }}</p>
+                </mat-list-item>
+              </div>
+            </mat-nav-list>
 
-          <!-- Categories Dropdown -->
-          <div (click)="showCategories()">
+            <!-- Analytics -->
             <mat-list-item>
-              <a routerLink="home/categories" class="link">
-                <mat-icon>menu</mat-icon>
-                Categories
-                <div style="margin-left: auto">
-                  <mat-icon>expand_more</mat-icon>
-                </div>
+              <a routerLink="analytics" class="link">
+                <mat-icon>build</mat-icon>
+                Analytics
+              </a>
+            </mat-list-item>
+
+            <mat-list-item>
+              <a routerLink="user" class="link">
+                <mat-icon>build</mat-icon>
+                User
               </a>
             </mat-list-item>
           </div>
-          <mat-nav-list *ngIf="isCategoriesVisible">
-            <div class="price-filter-list">
-              <mat-list-item
-                *ngFor="let category of categories"
-                class="dropdown-list"
-                (click)="filterProductsByCategory(category)"
-              >
-                <p class="price-filter">{{ category }}</p>
-              </mat-list-item>
-            </div>
-          </mat-nav-list>
-
-          <!-- Analytics -->
-          <mat-list-item>
-            <a routerLink="analytics" class="link">
-              <mat-icon>build</mat-icon>
-              Analytics
-            </a>
-          </mat-list-item>
-
-          <mat-list-item>
-            <a routerLink="user" class="link">
-              <mat-icon>build</mat-icon>
-              User
-            </a>
-          </mat-list-item>
         </div>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div>
+        <router-outlet></router-outlet>
       </div>
-    </mat-nav-list>
-  </mat-drawer>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+<div *ngIf="!isMenuVisible">
+  <router-outlet></router-outlet>
+</div>

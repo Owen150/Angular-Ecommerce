@@ -25,6 +25,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -64,6 +65,7 @@ import { UserlistComponent } from './Components/userlist/userlist.component';
     MatSidenavModule, 
     MatListModule,
     MatInputModule,
+    MatToolbarModule,
     StoreModule.forRoot({user:UserReducer}),
     EffectsModule.forRoot([UserEffect, AppEffects])
   ],
