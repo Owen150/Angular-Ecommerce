@@ -2,7 +2,7 @@
     <div class="trending-movies">
       <div class="top">
         <h4>All Products</h4>
-        <mat-form-field class="example-form-field" appearance="outline">
+        <!-- <mat-form-field class="example-form-field" appearance="outline">
           <mat-label class="limit">Product Limit</mat-label>
           <input
             matInput
@@ -12,7 +12,7 @@
             placeholder="Eg. 1"
             (input)="onInputChange()"
           >
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
     </div>
   
@@ -33,7 +33,7 @@
         </div>
         <mat-card-content
           class="card-content"
-          style="justify-content: space-between"
+          style="justify-content: space-between;"
         >
           {{ product.title }} <br />
             <p class="currency">{{ product.price * 130 | currency : "Ksh " }}</p>

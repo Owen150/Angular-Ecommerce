@@ -1,4 +1,64 @@
-.login-card {
+.main-container {
+  margin: auto;
+  width: 90vw;
+  text-align: center;
+  gap: 10px;
+  padding: 10px;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .child-container {
+    width: 50%;
+    float: left;
+    overflow: hidden;
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+.main-header {
+  font-size: 30px;
+  font-weight: bolder;
+}
+.sub-header {
+  font-size: 14px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  width: 75%;
+  margin: auto;
+}
+.input {
+  text-align: center;
+}
+button {
+  padding: 0.8rem;
+  border-radius: 1rem;
+  font-size: large;
+  &:hover {
+    background-color: #ebaaaa;
+    cursor: pointer;
+  }
+}
+small {
+  color: red;
+  font-size: 12px;
+}
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+
+
+
+/* .login-card {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -53,4 +113,4 @@ button {
 
 .heading h1 {
   margin: 0;
-}
+} */

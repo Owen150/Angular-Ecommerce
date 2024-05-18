@@ -6,16 +6,18 @@
     height: max-content;
     
     .mat-card-container {
+      margin-left: 20px;
+      margin-right: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
+      justify-content: space-around;
   
       .example-card {
-        margin-top: 15px;
         min-width: 280px;
-        height: 300px;
+        height: 310px;
         border-radius: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 45px;
+        padding-top: 20px;
         color: black;
         background-color: white;
         transition: box-shadow 0.3s;
@@ -31,7 +33,7 @@
       }
   
       .image-container {
-        padding: 10px;
+        padding-top: 20px;
         display: flex;
         justify-content: center;
         text-align: center;
@@ -52,12 +54,6 @@
         text-align: right;
       }
     }
-  
-    h4 {
-      font-weight: bold;
-      margin-left: 30px;
-      color: black;
-    }
   }
   
   .top {
@@ -72,8 +68,8 @@
       font-weight: bold;
       border-left: 7px solid #ff9900;
       padding-left: 10px;
-      margin-top: 20px;
-      margin-left: 30px;
+      margin-top: 15px;
+      margin-left: 44px;
       color: black;
     }
   }

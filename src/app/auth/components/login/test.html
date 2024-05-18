@@ -3,8 +3,8 @@
     <img src="../../assets/login/undraw_web_shopping_re_owap.svg" alt="" />
   </div>
   <div class="child-container">
-    <h2 class="main-header">Welcome to MyShop</h2>
-    <h5 class="sub-header">Enter your Username and Password to Log in</h5>
+    <h2 class="main-header">Welcome to themAll</h2>
+    <h5 class="sub-header">Type your email/username and password to log in</h5>
     <form [formGroup]="loginForm" class="login-form" (ngSubmit)="userLogin()">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
@@ -27,7 +27,7 @@
           </small>
         </mat-hint>
       </mat-form-field>
-
+      <!-- Password input field -->
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input
@@ -49,14 +49,8 @@
           </small></mat-hint
         >
       </mat-form-field>
-
-      <p>
-        Don't have an account?
-        <a style="color: #ff0000; text-decoration: none" routerLink="/auth/signup"
-          >Click here</a
-        >
-      </p>
-      <div class="actions">
+      <!-- Added -->
+      <mat-card-actions class="div-50">
         <div>
           <button
             mat-raised-button
@@ -64,20 +58,31 @@
             color="primary"
             [disabled]="!loginForm.valid"
           >
-            Log in
+            Login
           </button>
         </div>
 
         <div>
-          <button
+          <a
             routerLink="/home"
             (click)="resetLogin()"
             color="accent"
             mat-raised-button
-            >Cancel</button
+            >Cancel</a
           >
         </div>
-      </div>        
+      </mat-card-actions>
+      <div class="new">
+        <a routerLink="/auth/signup" color="primary" mat-button>New User?</a>
+      </div>
+
+      <!-- <p>
+        Don't have an account?
+        <a style="color: #ff0000; text-decoration: none" href="create-account"
+          >click here</a
+        >
+      </p>
+      <button type="submit">Log in</button> -->
     </form>
   </div>
 </div>
