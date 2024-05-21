@@ -11,4 +11,6 @@ export const isDuplicateUser = createSelector(getUserState, (state) => state.isD
 
 export const getMenuByRole = createSelector(getUserState, (state) => state.menuList);
 
-export const getUsersList = createSelector(getUserState, userSelector.selectAll)
+export const getUsersList = createSelector(getUserState, userSelector.selectAll);
+
+export const getRolesList = createSelector(getUserState, (state) => state.roleList);

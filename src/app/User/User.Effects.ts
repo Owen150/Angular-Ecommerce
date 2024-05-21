@@ -8,6 +8,8 @@ import {
   duplicateUserSuccess,
   fetchMenu,
   fetchMenuSuccess,
+  getRoleSuccess,
+  getRoles,
   getUserSuccess,
   getUsers,
 } from './User.action';
@@ -154,6 +156,27 @@ export class UserEffect {
             of(
               showalert({
                 message: 'Failed to fetch the User List.',
+                resulttype: 'fail',
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  _getallroles = createEffect(() =>
+    this.action$.pipe(
+      ofType(getRoles),
+      exhaustMap((action) => {  
+        return this.userService.getAllRoles().pipe(
+          map((data) => {
+            return getRoleSuccess({roleList: data});
+          }),
+          catchError((_error) =>
+            of(
+              showalert({
+                message: 'Failed to fetch the Roles List.',
                 resulttype: 'fail',
               })
             )

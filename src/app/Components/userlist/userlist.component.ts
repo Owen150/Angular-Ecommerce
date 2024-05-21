@@ -35,7 +35,7 @@ export class UserlistComponent implements OnInit {
   }
 
   functionChangeRole(username: string) {
-    this.OpenPopup(username)
+    this.OpenPopup(username);
   }
 
   OpenPopup(username: string) {

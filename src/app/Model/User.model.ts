@@ -50,5 +50,6 @@ export interface RoleAccess{
 // The UserModel will contain the defined States
 export interface UserModel extends EntityState<Users> {
   isDuplicate: boolean;
-  menuList: RoleAccess[]
+  menuList: RoleAccess[];
+  roleList: Roles[]; 
 }

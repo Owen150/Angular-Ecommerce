@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store"
-import { Menus, RoleAccess, Usercred, Userinfo, Users } from "../Model/User.model"
+import { Menus, RoleAccess, Roles, Usercred, Userinfo, Users } from "../Model/User.model"
 
 // User action variables
 export const BEGIN_REGISTER = '[auth] begin register'
@@ -12,7 +12,10 @@ export const FETCH_MENU = '[user] fetch menu'
 export const FETCH_MENU_SUCC  = '[user] fetch menu succ'
 
 export const GET_USERS = '[user] get users'
-export const GET_USERS_SUCC = '[user] get users succ' 
+export const GET_USERS_SUCC = '[user] get users succ'
+
+export const GET_ROLES='[role] get roles'
+export const GET_ROLE_SUCC='[role] get role succ'
 
 // User Actions
 export const beginRegister = createAction(BEGIN_REGISTER, props<{userdata: Users}>());
@@ -27,4 +30,7 @@ export const fetchMenu=createAction(FETCH_MENU,props<{userrole:string}>());
 export const fetchMenuSuccess=createAction(FETCH_MENU_SUCC, props<{menuList:RoleAccess[]}>());
 
 export const getUsers = createAction(GET_USERS);
-export const getUserSuccess = createAction(GET_USERS_SUCC, props<{userlist: Users[]}>())
+export const getUserSuccess = createAction(GET_USERS_SUCC, props<{userlist: Users[]}>());
+
+export const getRoles=createAction(GET_ROLES)
+export const getRoleSuccess=createAction(GET_ROLE_SUCC,props<{roleList:Roles[]}>())

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RoleAccess, Usercred, Userinfo, Users } from '../Model/User.model';
+import { RoleAccess, Roles, Usercred, Userinfo, Users } from '../Model/User.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -54,11 +54,17 @@ export class UserService {
     return this.httpClient.get<Users[]>(this.baseURL);
   }
 
+  // Get All Roles
+  getAllRoles(): Observable<Roles[]> {
+    return this.httpClient.get<Roles[]>('http://localhost:4000/role');
+  }
+
+
+
   // Save user data to local storage
   saveUserToLocalStorage(userdata: Userinfo) {
     localStorage.setItem('userdata', JSON.stringify(userdata));
   }
-
   // Get user data from local storage upon successful login
   getUserDataFromStrorage() {
     let _obj: Userinfo = {
