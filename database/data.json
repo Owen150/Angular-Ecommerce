@@ -348,7 +348,7 @@
       "email": "michaeloduor50@gmail.com",
       "phone": "0715836219",
       "gender": "male",
-      "role": "user",
+      "role": "admin",
       "status": true
     },
     {
@@ -423,42 +423,26 @@
   ],
   "menu":[
     {
-      "code": "home",
-      "name": "Home"
-    },
-    {
-      "code": "customer",
-      "name": "Customer"
+      "code": "analytics",
+      "name": "analytics"
     },
     {
       "code": "user",
-      "name": "User"
+      "name": "user"
     }
   ],
   "roleaccess":[
     {
       "role": "admin",
-      "menu": "Home"
+      "menu": "analytics"
     },
     {
       "role": "admin",
-      "menu": "Customer"
-    },
-    {
-      "role": "admin",
-      "menu": "User"
+      "menu": "user"
     },
     {
       "role": "manager",
-      "menu": "Home"
-    },
-    {
-      "role": "manager",
-      "menu": "Customer"
-    },
-    {
-      "role": "user",
-      "menu": "Home"
+      "menu": "analytics"
     }
   ]
 }

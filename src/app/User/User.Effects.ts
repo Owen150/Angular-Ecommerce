@@ -8,6 +8,8 @@ import {
   duplicateUserSuccess,
   fetchMenu,
   fetchMenuSuccess,
+  getUserSuccess,
+  getUsers,
 } from './User.action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
@@ -81,29 +83,29 @@ export class UserEffect {
   _userlogin = createEffect(() =>
     this.action$.pipe(
       ofType(beginLogin),
-      exhaustMap((action) => {
+      switchMap((action) => {
         return this.userService.userLogin(action.usercred).pipe(
-          map((data) => {
+          switchMap((data: Userinfo[]) => {
             if (data.length > 0) {
               const _userdata = data[0];
               if (_userdata.status === true) {
                 this.userService.saveUserToLocalStorage(_userdata);
                 this.router.navigate(['home']);
-                return showalert({
+                return of(fetchMenu({userrole: _userdata.role}),showalert({
                   message: 'Login Successful.',
                   resulttype: 'pass',
-                });
+                }));
               } else {
-                return showalert({
+                return of(showalert({
                   message: 'Inactive User.',
                   resulttype: 'fail',
-                });
+                }));
               }
             } else {
-              return showalert({
+              return of(showalert({
                 message: 'Login Failed. Invalid Credentials',
                 resulttype: 'fail',
-              });
+              }));
             }
           }),
           catchError((_error) =>
@@ -131,6 +133,27 @@ export class UserEffect {
             of(
               showalert({
                 message: 'Failed to fetch the Menu List.',
+                resulttype: 'fail',
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  _getallusers = createEffect(() =>
+    this.action$.pipe(
+      ofType(getUsers),
+      exhaustMap((action) => {  
+        return this.userService.getAllUsers().pipe(
+          map((data) => {
+            return getUserSuccess({userlist: data});
+          }),
+          catchError((_error) =>
+            of(
+              showalert({
+                message: 'Failed to fetch the User List.',
                 resulttype: 'fail',
               })
             )

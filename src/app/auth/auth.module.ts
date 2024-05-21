@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatButtonModule,
     MatSnackBarModule,
     MatIconModule,
-    MatRadioModule
+    MatRadioModule,
+    MatStepperModule
   ]
 })
 export class AuthModule { }

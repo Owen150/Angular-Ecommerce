@@ -137,8 +137,13 @@
               </div>
             </mat-nav-list>
 
-            <!-- Analytics -->
-            <mat-list-item>
+            <mat-list-item *ngFor="let item of menuList">
+              <a routerLink="{{ item.menu }}" class="link"
+                ><mat-icon>build</mat-icon>{{ item.menu }}</a
+              >
+            </mat-list-item>
+
+            <!-- <mat-list-item>
               <a routerLink="analytics" class="link">
                 <mat-icon>build</mat-icon>
                 Analytics
@@ -150,7 +155,7 @@
                 <mat-icon>build</mat-icon>
                 User
               </a>
-            </mat-list-item>
+            </mat-list-item> -->
           </div>
         </div>
       </mat-nav-list>

@@ -20,8 +20,9 @@ import { CreateProductComponent } from '../../home/components/create-product/cre
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { RoleAccess } from 'src/app/Model/User.model';
+import { RoleAccess, Userinfo } from 'src/app/Model/User.model';
 import { getMenuByRole } from 'src/app/User/User.Selector';
+import { fetchMenu } from 'src/app/User/User.action';
 
 @Component({
   selector: 'app-header',
@@ -62,6 +63,13 @@ export class HeaderComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit(): void {
+    // Set Menu Items OnInit
+    if(localStorage.getItem('userdata') != null){
+      let jsonstring = localStorage.getItem('userdata') as string;
+      const _obj = JSON.parse(jsonstring) as Userinfo;
+      this.store.dispatch(fetchMenu({userrole:_obj.role}))
+    }
+
     this.getCartItemCount();
     this.getProductCategories();
     this.store.select(getMenuByRole).subscribe(item => {

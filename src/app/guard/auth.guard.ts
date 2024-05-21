@@ -9,8 +9,28 @@ import { Userinfo } from '../Model/User.model';
 export const authGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService);
   const router = inject(Router);
+  let menuname = '';
+
+  if(route.url.length>0){
+    menuname = route.url[0].path;
+  }
+
   const userinfo: Userinfo = userService.getUserDataFromStrorage();
   if (userinfo.username != '' && userinfo.username != null) {
+    if (menuname != '') {
+      userService.hasMenuAccess(userinfo.role, menuname).subscribe((item) => {
+        const _menudata = item;
+        if (_menudata.length > 0) {
+          return true;
+        } else {
+          alert('Unauthorized Access.');
+          router.navigate(['/home']);
+          return false;
+        }
+      });
+    } else {
+      return true;
+    }
     return true;
   } else {
     router.navigate(['/auth/login']);
