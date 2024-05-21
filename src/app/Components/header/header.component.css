@@ -98,7 +98,7 @@ input {
 
 .cart-items {
   position: relative;
-  top: -9px;
+  top: -10px;
   background-color: rgb(255, 102, 5);
   outline: white solid 2px;
   height: 18px;

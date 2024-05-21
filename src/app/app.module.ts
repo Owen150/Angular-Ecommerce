@@ -26,6 +26,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -35,6 +39,7 @@ import { UserEffect } from './User/User.Effects';
 import { AppEffects } from './Common/App.effects';
 import { AnalyticsComponent } from './Components/analytics/analytics.component';
 import { UserlistComponent } from './Components/userlist/userlist.component';
+import { RolepopupComponent } from './Components/rolepopup/rolepopup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,8 @@ import { UserlistComponent } from './Components/userlist/userlist.component';
     HeaderComponent,
     DeleteConfirmationComponent,
     AnalyticsComponent,
-    UserlistComponent
+    UserlistComponent,
+    RolepopupComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +72,9 @@ import { UserlistComponent } from './Components/userlist/userlist.component';
     MatListModule,
     MatInputModule,
     MatToolbarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     StoreModule.forRoot({user:UserReducer}),
     EffectsModule.forRoot([UserEffect, AppEffects])
   ],
