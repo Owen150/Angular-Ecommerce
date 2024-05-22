@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RoleAccess, Roles, Usercred, Userinfo, Users } from '../Model/User.model';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +59,15 @@ export class UserService {
     return this.httpClient.get<Roles[]>('http://localhost:4000/role');
   }
 
+  // Update User Role
+  updateUserRole(userId: number, role: string){
+    return this.httpClient.get<Users>(this.baseURL+'/'+userId).pipe(
+      switchMap((data) => {
+        data.role = role;
+        return this.httpClient.put(this.baseURL+'/'+userId, data);
+      })
+    )
+  }
 
 
   // Save user data to local storage

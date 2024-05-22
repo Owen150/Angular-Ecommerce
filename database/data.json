@@ -381,7 +381,7 @@
       "email": "pajutu@mailinator.com",
       "phone": "+1 (949) 941-8204",
       "gender": "other",
-      "role": "user",
+      "role": "admin",
       "status": true
     },
     {
@@ -392,7 +392,7 @@
       "email": "ladiwoj@mailinator.com",
       "phone": 744,
       "gender": "male",
-      "role": "user",
+      "role": "manager",
       "status": true
     },
     {
@@ -407,58 +407,70 @@
       "status": true
     }
   ],
-  "role":[
+  "role": [
     {
       "code": "admin",
-      "name": "Admin"
+      "name": "Admin",
+      "id": "084f"
     },
     {
       "code": "manager",
-      "name": "Manager"
+      "name": "Manager",
+      "id": "5473"
     },
     {
       "code": "user",
-      "name": "User"
+      "name": "User",
+      "id": "511e"
     }
   ],
-  "menu":[
+  "menu": [
     {
       "code": "analytics",
-      "name": "analytics"
+      "name": "analytics",
+      "id": "b66d"
     },
     {
       "code": "user",
-      "name": "user"
+      "name": "user",
+      "id": "0258"
     },
     {
       "code": "cart",
-      "name": "cart"
+      "name": "cart",
+      "id": "9c76"
     }
   ],
-  "roleaccess":[
+  "roleaccess": [
     {
       "role": "admin",
-      "menu": "analytics"
+      "menu": "analytics",
+      "id": "1f2a"
     },
     {
       "role": "admin",
-      "menu": "user"
+      "menu": "user",
+      "id": "6dd1"
     },
     {
       "role": "admin",
-      "menu": "cart"
+      "menu": "cart",
+      "id": "7a5d"
     },
     {
       "role": "manager",
-      "menu": "analytics"
+      "menu": "analytics",
+      "id": "ec96"
     },
     {
       "role": "manager",
-      "menu": "cart"
+      "menu": "cart",
+      "id": "e04d"
     },
     {
       "role": "user",
-      "menu": "cart"
+      "menu": "cart",
+      "id": "3c91"
     }
   ]
 }

@@ -14,6 +14,7 @@ import {
   getUserSuccess,
   getUsers,
   getuserbycode,
+  updateuserrole,
 } from './User.action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
@@ -164,7 +165,7 @@ export class UserEffect {
           catchError((_error) =>
             of(
               showalert({
-                message: 'Failed to fetch the User List.',
+                message: 'Failed to fetch the Users List.',
                 resulttype: 'fail',
               })
             )
@@ -210,12 +211,41 @@ export class UserEffect {
           catchError((_error) =>
             of(
               showalert({
-                message: 'Get User by Code Failed due to :.' + _error.message,
+                message: 'Get User by Code Failed due to: ' + _error.message,
                 resulttype: 'fail',
               })
             )
           )
         );
+      })
+    )
+  );
+
+  _assignrole = createEffect(() =>
+    this.action$.pipe(
+      ofType(updateuserrole),
+      switchMap((action) => {
+        return this.userService
+          .updateUserRole(action.userId, action.userRole)
+          .pipe(
+            switchMap(() => {
+              return of(
+                getUsers(),
+                showalert({
+                  message: 'User Role Updated Successfully',
+                  resulttype: 'pass',
+                })
+              );
+            }),
+            catchError((_error) =>
+              of(
+                showalert({
+                  message: 'User Role Update Failed due to: ' + _error.message,
+                  resulttype: 'fail',
+                })
+              )
+            )
+          );
       })
     )
   );
