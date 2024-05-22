@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { PermissionsService } from 'src/app/Services/permissions.service';
 import { ProductsService } from 'src/app/products.service';
 
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.css']
+  styleUrls: ['./analytics.component.css'],
 })
-export class AnalyticsComponent implements OnInit{
+export class AnalyticsComponent implements OnInit {
   productData: any;
   productPrice: any[] = [];
   productCategory: any[] = [];
@@ -15,9 +16,13 @@ export class AnalyticsComponent implements OnInit{
   productCount: any[] = [];
   productTitle: any[] = [];
 
-  constructor(private productService: ProductsService) {}
+  constructor(
+    private productService: ProductsService,
+    private permissionsService: PermissionsService
+  ) {}
 
   ngOnInit(): void {
+    this.permissionsService.loadPermissions();
     this.productService.showData().subscribe((res) => {
       this.productData = res;
 
@@ -65,7 +70,31 @@ export class AnalyticsComponent implements OnInit{
           {
             label: '# of Votes',
             data: data,
-            backgroundColor: ['red', 'green', 'green', 'orange', 'orange', 'black', 'grey','purple', 'pink', 'brown', 'blue', 'cyan', 'peach', 'turquoise', 'magenta', 'green', 'teal', 'maroon', 'orange', 'coral', 'slate', 'mint', 'yellow'],
+            backgroundColor: [
+              'red',
+              'green',
+              'green',
+              'orange',
+              'orange',
+              'black',
+              'grey',
+              'purple',
+              'pink',
+              'brown',
+              'blue',
+              'cyan',
+              'peach',
+              'turquoise',
+              'magenta',
+              'green',
+              'teal',
+              'maroon',
+              'orange',
+              'coral',
+              'slate',
+              'mint',
+              'yellow',
+            ],
             borderWidth: 1,
           },
         ],

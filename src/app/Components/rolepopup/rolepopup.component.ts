@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Roles, Userinfo } from 'src/app/Model/User.model';
+import { PermissionsService } from 'src/app/Services/permissions.service';
 import { getRolesList, getUserByCode } from 'src/app/User/User.Selector';
 import {
   getRoles,
@@ -22,11 +23,13 @@ export class RolepopupComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     private store: Store,
+    private permissionsService: PermissionsService,
     private ref: MatDialogRef<RolepopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
+    this.permissionsService.loadPermissions();
     this.store.dispatch(getRoles());
     this.store.select(getRolesList).subscribe((item) => {
       this.roleList = item;

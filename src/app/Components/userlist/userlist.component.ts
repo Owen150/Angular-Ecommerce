@@ -8,6 +8,7 @@ import { getUsers } from 'src/app/User/User.action';
 import { RolepopupComponent } from '../rolepopup/rolepopup.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { PermissionsService } from 'src/app/Services/permissions.service';
 
 @Component({
   selector: 'app-userlist',
@@ -16,21 +17,32 @@ import { MatSort } from '@angular/material/sort';
 })
 export class UserlistComponent implements OnInit {
   userlist!: Users[];
-  displayedColums: string[] = ['username', 'name', 'email', 'role', 'status', 'action'];
+  displayedColums: string[] = [
+    'username',
+    'name',
+    'email',
+    'role',
+    'status',
+    'action',
+  ];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort 
+  @ViewChild(MatSort) sort!: MatSort;
 
-
-  constructor(private store: Store, private dialog: MatDialog) {}
+  constructor(
+    private store: Store,
+    private dialog: MatDialog,
+    private permissionsService: PermissionsService
+  ) {}
 
   ngOnInit(): void {
+    this.permissionsService.loadPermissions();
     this.store.dispatch(getUsers());
     this.store.select(getUsersList).subscribe((item) => {
       this.userlist = item;
       this.dataSource = new MatTableDataSource<Users>(this.userlist);
-      this.dataSource.paginator = this.paginator
-      this.dataSource.sort = this.sort
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -44,8 +56,8 @@ export class UserlistComponent implements OnInit {
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
       data: {
-        code: username
-      }
-    })
+        code: username,
+      },
+    });
   }
 }
