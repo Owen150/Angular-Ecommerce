@@ -49,6 +49,7 @@ export interface RoleAccess{
 // Initialize State Properties
 // The UserModel will contain the defined States
 export interface UserModel extends EntityState<Users> {
+  userInfo: Userinfo;
   isDuplicate: boolean;
   menuList: RoleAccess[];
   roleList: Roles[]; 

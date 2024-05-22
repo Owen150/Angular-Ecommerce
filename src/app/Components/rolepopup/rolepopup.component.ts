@@ -3,8 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Roles, Userinfo } from 'src/app/Model/User.model';
-import { getRolesList } from 'src/app/User/User.Selector';
-import { getRoles } from 'src/app/User/User.action';
+import { getRolesList, getUserByCode } from 'src/app/User/User.Selector';
+import { getRoles, getuserbycode } from 'src/app/User/User.action';
 
 @Component({
   selector: 'app-rolepopup',
@@ -24,9 +24,20 @@ export class RolepopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(getRoles());
-    this.store.select(getRolesList).subscribe((data) => {
-      this.roleList = data;
+    this.store.select(getRolesList).subscribe((item) => {
+      this.roleList = item;
     })
+    if (this.data != null) {
+      this.store.dispatch(getuserbycode({ username: this.data.code }));
+      this.store.select(getUserByCode).subscribe(item => {
+        this.userInfo = item;
+        this.roleForm.setValue({
+          username: this.userInfo.username,
+          role: this.userInfo.role,
+          id: this.userInfo.id
+        })
+      })
+    }
   }
 
   roleForm = this.builder.group({

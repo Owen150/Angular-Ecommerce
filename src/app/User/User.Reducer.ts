@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { UserAdapter, UserState } from './User.state';
-import { duplicateUserSuccess, fetchMenuSuccess, getRoleSuccess, getUserSuccess } from './User.action';
+import { duplicateUserSuccess, fetchMenuSuccess, getRoleSuccess, getUserByCodeSuccess, getUserSuccess } from './User.action';
 
 // Reducers are pure functions that handle state changes. 
 // They take the current state i.e UserState, and the latest action i.e on duplicateUserSuccess/fetchMenuSuccess, to compute a new state.
@@ -20,6 +20,9 @@ const _userReducer = createReducer(
   }),
   on(getRoleSuccess, (state, action) => {
     return { ...state, roleList: action.roleList };
+  }),
+  on(getUserByCodeSuccess, (state, action) => {
+    return { ...state, userInfo: action.userInfo };
   })
 );
 

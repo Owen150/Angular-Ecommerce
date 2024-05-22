@@ -10,8 +10,10 @@ import {
   fetchMenuSuccess,
   getRoleSuccess,
   getRoles,
+  getUserByCodeSuccess,
   getUserSuccess,
   getUsers,
+  getuserbycode,
 } from './User.action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
@@ -93,21 +95,28 @@ export class UserEffect {
               if (_userdata.status === true) {
                 this.userService.saveUserToLocalStorage(_userdata);
                 this.router.navigate(['home']);
-                return of(fetchMenu({userrole: _userdata.role}),showalert({
-                  message: 'Login Successful.',
-                  resulttype: 'pass',
-                }));
+                return of(
+                  fetchMenu({ userrole: _userdata.role }),
+                  showalert({
+                    message: 'Login Successful.',
+                    resulttype: 'pass',
+                  })
+                );
               } else {
-                return of(showalert({
-                  message: 'Inactive User.',
-                  resulttype: 'fail',
-                }));
+                return of(
+                  showalert({
+                    message: 'Inactive User.',
+                    resulttype: 'fail',
+                  })
+                );
               }
             } else {
-              return of(showalert({
-                message: 'Login Failed. Invalid Credentials',
-                resulttype: 'fail',
-              }));
+              return of(
+                showalert({
+                  message: 'Login Failed. Invalid Credentials',
+                  resulttype: 'fail',
+                })
+              );
             }
           }),
           catchError((_error) =>
@@ -129,7 +138,7 @@ export class UserEffect {
       exhaustMap((action) => {
         return this.userService.getMenuByRole(action.userrole).pipe(
           map((data) => {
-            return fetchMenuSuccess({menuList: data});
+            return fetchMenuSuccess({ menuList: data });
           }),
           catchError((_error) =>
             of(
@@ -147,10 +156,10 @@ export class UserEffect {
   _getallusers = createEffect(() =>
     this.action$.pipe(
       ofType(getUsers),
-      exhaustMap((action) => {  
+      exhaustMap((action) => {
         return this.userService.getAllUsers().pipe(
           map((data) => {
-            return getUserSuccess({userlist: data});
+            return getUserSuccess({ userlist: data });
           }),
           catchError((_error) =>
             of(
@@ -168,15 +177,40 @@ export class UserEffect {
   _getallroles = createEffect(() =>
     this.action$.pipe(
       ofType(getRoles),
-      exhaustMap((action) => {  
+      exhaustMap((action) => {
         return this.userService.getAllRoles().pipe(
           map((data) => {
-            return getRoleSuccess({roleList: data});
+            return getRoleSuccess({ roleList: data });
           }),
           catchError((_error) =>
             of(
               showalert({
                 message: 'Failed to fetch the Roles List.',
+                resulttype: 'fail',
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  _getuserbycode = createEffect(() =>
+    this.action$.pipe(
+      ofType(getuserbycode),
+      switchMap((action) => {
+        return this.userService.duplicateUserName(action.username).pipe(
+          switchMap((data) => {
+            if (data.length > 0) {
+              return of(getUserByCodeSuccess({ userInfo: data[0] }));
+            } else {
+              return of(duplicateUserSuccess({ isDuplicate: false }));
+            }
+          }),
+          catchError((_error) =>
+            of(
+              showalert({
+                message: 'Get User by Code Failed due to :.' + _error.message,
                 resulttype: 'fail',
               })
             )

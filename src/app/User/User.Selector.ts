@@ -14,3 +14,5 @@ export const getMenuByRole = createSelector(getUserState, (state) => state.menuL
 export const getUsersList = createSelector(getUserState, userSelector.selectAll);
 
 export const getRolesList = createSelector(getUserState, (state) => state.roleList);
+
+export const getUserByCode = createSelector(getUserState, (state) => state.userInfo);
