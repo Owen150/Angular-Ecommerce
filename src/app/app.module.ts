@@ -5,14 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 /*Component imports */
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { ProductComponent } from './Components/product/product.component';
 import { DeleteConfirmationComponent } from './Components/delete-confirmation/delete-confirmation.component';
+import { AnalyticsComponent } from './Components/analytics/analytics.component';
+import { UserlistComponent } from './Components/userlist/userlist.component';
+import { RolepopupComponent } from './Components/rolepopup/rolepopup.component';
 
-/*Angular imports */
+/*Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -37,9 +41,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserReducer } from './User/User.Reducer';
 import { UserEffect } from './User/User.Effects';
 import { AppEffects } from './Common/App.effects';
-import { AnalyticsComponent } from './Components/analytics/analytics.component';
-import { UserlistComponent } from './Components/userlist/userlist.component';
-import { RolepopupComponent } from './Components/rolepopup/rolepopup.component';
+
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { RolepopupComponent } from './Components/rolepopup/rolepopup.component';
     MatSortModule,
     MatPaginatorModule,
     StoreModule.forRoot({user:UserReducer}),
-    EffectsModule.forRoot([UserEffect, AppEffects])
+    EffectsModule.forRoot([UserEffect, AppEffects]),
+    NgxPermissionsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

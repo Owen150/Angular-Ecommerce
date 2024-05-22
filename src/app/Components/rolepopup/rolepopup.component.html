@@ -1,4 +1,4 @@
-<form [formGroup]="roleForm" (ngSubmit)="saveUserRole()">
+<form [formGroup]="roleForm" (ngSubmit)="saveUserRole()" *ngxPermissionsOnly="'ADMIN'">
     <mat-card>
         <mat-card-header>
             <h1>User Role Assignment</h1>
