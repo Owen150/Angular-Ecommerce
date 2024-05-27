@@ -1,15 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PermissionsService {
+  private userURL = 'http://localhost:4000/user';
 
-  constructor(private permissionsService: NgxPermissionsService) { }
+  constructor(private httpClient: HttpClient) {}
 
-  loadPermissions(){
-    const perm = ['ADMIN'];
-    this.permissionsService.loadPermissions(perm);
+  // public delay() {
+  //   return new Promise((resolve) => setTimeout(resolve, 500));
+  // }
+
+  public loadPermissions() {
+    return this.httpClient
+      .get(this.userURL)
+      .toPromise()
+      .then(() => {
+        return ['ADMIN', 'USER', 'MANAGER', 'SUPPLIER'];
+      }
+    );
   }
 }

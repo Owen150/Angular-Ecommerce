@@ -1,9 +1,9 @@
-<div class="analytics-container" *ngxPermissionsOnly="'ADMIN'">
+<div class="analytics-container">
   <div class="title">
     <h1>Product Analytics</h1>
   </div>
 
-  <div class="bottom-container">
+  <div class="bottom-container" *ngxPermissionsOnly="'ADMIN'">
     <mat-card class="pie-chart-container">
       <mat-card-header class="header-content">
         <div>
@@ -27,7 +27,7 @@
     </mat-card>
   </div>
 
-  <div class="top-container">
+  <div class="top-container" *ngxPermissionsOnly="'MANAGER'">
     <mat-card class="line-chart-container">
       <mat-card-header class="header-content">
         <div>

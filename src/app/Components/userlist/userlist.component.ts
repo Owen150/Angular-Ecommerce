@@ -32,11 +32,10 @@ export class UserlistComponent implements OnInit {
   constructor(
     private store: Store,
     private dialog: MatDialog,
-    private permissionsService: PermissionsService
   ) {}
 
   ngOnInit(): void {
-    this.permissionsService.loadPermissions();
+    // this.permissionsService.loadPermissions();
     this.store.dispatch(getUsers());
     this.store.select(getUsersList).subscribe((item) => {
       this.userlist = item;

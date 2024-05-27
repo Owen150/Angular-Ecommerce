@@ -18,11 +18,10 @@ export class AnalyticsComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private permissionsService: PermissionsService
   ) {}
 
   ngOnInit(): void {
-    this.permissionsService.loadPermissions();
+    // this.permissionsService.loadPermissions();
     this.productService.showData().subscribe((res) => {
       this.productData = res;
 

@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxPermissionsModule } from 'ngx-permissions';
+import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
 /*Component imports */
 import { AppComponent } from './app.component';
@@ -34,14 +34,25 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { UserReducer } from './User/User.Reducer';
 import { UserEffect } from './User/User.Effects';
 import { AppEffects } from './Common/App.effects';
+import { PermissionsService } from './Services/permissions.service';
 
+export function permissionsFactory(
+  permissionsService: PermissionsService,
+  ngxPermissionsService: NgxPermissionsService
+) {
+  return () => {
+    return permissionsService.loadPermissions().then((data) => {
+      ngxPermissionsService.loadPermissions(data);
+      return true;
+    });
+  };
+}
 
 @NgModule({
   declarations: [
@@ -51,7 +62,7 @@ import { AppEffects } from './Common/App.effects';
     DeleteConfirmationComponent,
     AnalyticsComponent,
     UserlistComponent,
-    RolepopupComponent
+    RolepopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,18 +81,25 @@ import { AppEffects } from './Common/App.effects';
     MatIconModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatSidenavModule, 
+    MatSidenavModule,
     MatListModule,
     MatInputModule,
     MatToolbarModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    StoreModule.forRoot({user:UserReducer}),
+    StoreModule.forRoot({ user: UserReducer }),
     EffectsModule.forRoot([UserEffect, AppEffects]),
-    NgxPermissionsModule.forRoot()
+    NgxPermissionsModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: permissionsFactory,
+      deps: [PermissionsService, NgxPermissionsService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
