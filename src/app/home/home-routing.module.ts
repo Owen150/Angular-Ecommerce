@@ -5,7 +5,7 @@ import { HomeComponent } from './home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 
-import { authGuard } from '../guard/auth.guard';
+import { authGuard } from '../core/Guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

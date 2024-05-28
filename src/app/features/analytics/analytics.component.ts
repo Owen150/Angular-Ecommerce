@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { PermissionsService } from 'src/app/Services/permissions.service';
-import { ProductsService } from 'src/app/products.service';
+import { ProductsService } from 'src/app/core/Services/products.service';
 
 @Component({
   selector: 'app-analytics',
@@ -21,7 +20,6 @@ export class AnalyticsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.permissionsService.loadPermissions();
     this.productService.showData().subscribe((res) => {
       this.productData = res;
 

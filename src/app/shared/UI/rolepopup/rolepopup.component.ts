@@ -2,14 +2,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Roles, Userinfo } from 'src/app/Model/User.model';
-import { PermissionsService } from 'src/app/Services/permissions.service';
-import { getRolesList, getUserByCode } from 'src/app/User/User.Selector';
+import { Roles, Userinfo } from 'src/app/core/Store/Models/User.model';
+import { PermissionsService } from 'src/app/core/Services/permissions.service';
+import { getRolesList, getUserByCode } from 'src/app/core/User/User.Selector';
 import {
   getRoles,
   getuserbycode,
   updateuserrole,
-} from 'src/app/User/User.action';
+} from 'src/app/core/User/User.Action';
 
 @Component({
   selector: 'app-rolepopup',

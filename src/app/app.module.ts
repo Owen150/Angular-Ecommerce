@@ -9,12 +9,12 @@ import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Components/header/header.component';
-import { ProductComponent } from './Components/product/product.component';
-import { DeleteConfirmationComponent } from './Components/delete-confirmation/delete-confirmation.component';
-import { AnalyticsComponent } from './Components/analytics/analytics.component';
-import { UserlistComponent } from './Components/userlist/userlist.component';
-import { RolepopupComponent } from './Components/rolepopup/rolepopup.component';
+import { HeaderComponent } from './shared/Layouts/header/header.component';
+import { ProductComponent } from './features/product/product.component';
+import { DeleteConfirmationComponent } from './shared/UI/delete-confirmation_modal/delete-confirmation.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { UserlistComponent } from './shared/UI/userlist/userlist.component';
+import { RolepopupComponent } from './shared/UI/rolepopup/rolepopup.component';
 
 /*Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -37,10 +37,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { UserReducer } from './User/User.Reducer';
-import { UserEffect } from './User/User.Effects';
-import { AppEffects } from './Common/App.effects';
-import { PermissionsService } from './Services/permissions.service';
+import { UserReducer } from './core/User/User.Reducer';
+import { UserEffect } from './core/User/User.Effects';
+import { AppEffects } from './core/App Actions/App.Effects';
+import { PermissionsService } from './core/Services/permissions.service';
 
 export function permissionsFactory(
   permissionsService: PermissionsService,

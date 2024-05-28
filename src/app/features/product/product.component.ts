@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../../products.service';
+import { ProductsService } from 'src/app/core/Services/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../../home/components/create-product/create-product.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-import { CartService } from '../../cart.service';
+import { DeleteConfirmationComponent } from 'src/app/shared/UI/delete-confirmation_modal/delete-confirmation.component';
+import { CartService } from 'src/app/core/Services/cart.service';
 
 @Component({
   selector: 'app-product',

@@ -15,11 +15,11 @@ import {
   getUsers,
   getuserbycode,
   updateuserrole,
-} from './User.action';
+} from './User.Action';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
-import { showalert } from '../Common/App.action';
-import { Userinfo } from '../Model/User.model';
+import { showalert } from '../App Actions/App.Action';
+import { Userinfo } from '../Store/Models/User.model';
 
 @Injectable()
 export class UserEffect {

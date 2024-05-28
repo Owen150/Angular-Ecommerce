@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { UserService } from '../Services/user.service';
-import { Userinfo } from '../Model/User.model';
+import { Userinfo } from '../Store/Models/User.model';
 
 // Auth Guards is a technique used to protect ones routes based on the user authentication status.
 // It will manage different access levels to routes between authenticated and non-authenticated users, and returns a boolean value based on access permissions

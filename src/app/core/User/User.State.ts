@@ -1,5 +1,5 @@
 import { createEntityAdapter } from '@ngrx/entity';
-import { UserModel, Users } from '../Model/User.model';
+import { UserModel, Users } from '../Store/Models/User.model';
 
 export const UserAdapter = createEntityAdapter<Users>();
 

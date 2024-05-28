@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { authGuard } from './guard/auth.guard';
-import { ProductComponent } from './Components/product/product.component';
-import { AnalyticsComponent } from './Components/analytics/analytics.component';
-import { UserlistComponent } from './Components/userlist/userlist.component';
-import { NgxPermissionsGuard, ngxPermissionsGuard } from 'ngx-permissions';
-import { permissionsGuard } from './guard/permissions.guard';
+import { authGuard } from './core/Guards/auth.guard';
+import { ProductComponent } from './features/product/product.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { UserlistComponent } from './shared/UI/userlist/userlist.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
+import { permissionsGuard } from './core/Guards/permissions.guard';
 
 const routes: Routes = [
   { 
@@ -20,8 +20,8 @@ const routes: Routes = [
   },
   { 
     path: 'user', 
-    component: UserlistComponent, 
-    canActivate: [NgxPermissionsGuard],
+    component: UserlistComponent,
+    canActivate: [authGuard, NgxPermissionsGuard],
     data: {
       permissions: {
         only: ['ADMIN', 'MANAGER']
@@ -31,7 +31,7 @@ const routes: Routes = [
   { 
     path: 'analytics', 
     component: AnalyticsComponent, 
-    canActivate: [NgxPermissionsGuard],
+    canActivate: [authGuard, NgxPermissionsGuard],
     data: {
       permissions: {
         only: ['ADMIN', 'MANAGER']
@@ -45,13 +45,12 @@ const routes: Routes = [
   },
   { 
     path: 'auth', 
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate: [permissionsGuard] 
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   { 
     path: 'cart', 
     loadChildren: () => import('./cart/cart.module').then(m => m.CartModule), 
-    canActivate: [authGuard] 
+    canActivate: [authGuard, permissionsGuard]
   },
 ];
 

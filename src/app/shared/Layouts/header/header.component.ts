@@ -10,19 +10,19 @@ import {
 } from '@angular/animations';
 
 /* Service import */
-import { ProductsService } from '../../products.service';
-import { CartService } from '../../cart.service';
+import { ProductsService } from '../../../core/Services/products.service';
+import { CartService } from '../../../core/Services/cart.service';
 
 /*Component imports */
-import { CreateProductComponent } from '../../home/components/create-product/create-product.component';
+import { CreateProductComponent } from '../../../home/components/create-product/create-product.component';
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { RoleAccess, Userinfo } from 'src/app/Model/User.model';
-import { getMenuByRole } from 'src/app/User/User.Selector';
-import { fetchMenu } from 'src/app/User/User.action';
+import { RoleAccess, Userinfo } from 'src/app/core/Store/Models/User.model';
+import { getMenuByRole } from 'src/app/core/User/User.Selector';
+import { fetchMenu } from 'src/app/core/User/User.Action';
 
 @Component({
   selector: 'app-header',
