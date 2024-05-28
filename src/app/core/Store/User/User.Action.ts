@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store"
-import { Menus, RoleAccess, Roles, Usercred, Userinfo, Users } from "../Store/Models/User.model"
+import { Menus, RoleAccess, Roles, Usercred, Userinfo, Users } from "../Models/User.model"
 
 // User action variables
 export const BEGIN_REGISTER = '[auth] begin register'

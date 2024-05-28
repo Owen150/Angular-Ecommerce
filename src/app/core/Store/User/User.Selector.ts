@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { UserModel } from "../Store/Models/User.model";
+import { UserModel } from "../Models/User.model";
 import { UserAdapter } from "./User.State";
 
 // Selectors are pure functions used to select, derive, and compose pieces of a state

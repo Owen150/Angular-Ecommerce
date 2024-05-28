@@ -21,8 +21,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RoleAccess, Userinfo } from 'src/app/core/Store/Models/User.model';
-import { getMenuByRole } from 'src/app/core/User/User.Selector';
-import { fetchMenu } from 'src/app/core/User/User.Action';
+import { getMenuByRole } from 'src/app/core/Store/User/User.Selector';
+import { fetchMenu } from 'src/app/core/Store/User/User.Action';
 
 @Component({
   selector: 'app-header',

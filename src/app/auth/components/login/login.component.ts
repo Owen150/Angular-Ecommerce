@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Usercred } from 'src/app/core/Store/Models/User.model';
-import { beginLogin } from 'src/app/core/User/User.Action';
+import { beginLogin } from 'src/app/core/Store/User/User.Action';
 
 @Component({
   selector: 'app-login',

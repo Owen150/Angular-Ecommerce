@@ -37,9 +37,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { UserReducer } from './core/User/User.Reducer';
-import { UserEffect } from './core/User/User.Effects';
-import { AppEffects } from './core/App Actions/App.Effects';
+import { UserReducer } from './core/Store/User/User.Reducer';
+import { UserEffect } from './core/Store/User/User.Effects';
+import { AppEffects } from './core/Store/App Actions/App.Effects';
 import { PermissionsService } from './core/Services/permissions.service';
 
 export function permissionsFactory(

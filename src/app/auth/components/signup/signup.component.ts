@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Users } from 'src/app/core/Store/Models/User.model';
-import { beginRegister, duplicateUser } from 'src/app/core/User/User.Action';
-import { showalert } from 'src/app/core/App Actions/App.Action';
-import { isDuplicateUser } from 'src/app/core/User/User.Selector';
+import { beginRegister, duplicateUser } from 'src/app/core/Store/User/User.Action';
+import { showalert } from 'src/app/core/Store/App Actions/App.Action';
+import { isDuplicateUser } from 'src/app/core/Store/User/User.Selector';
 
 @Component({
   selector: 'app-signup',

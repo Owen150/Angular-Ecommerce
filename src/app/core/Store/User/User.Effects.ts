@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { UserService } from '../Services/user.service';
+import { UserService } from '../../Services/user.service';
 import {
   beginLogin,
   beginRegister,
@@ -19,7 +19,7 @@ import {
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { showalert } from '../App Actions/App.Action';
-import { Userinfo } from '../Store/Models/User.model';
+import { Userinfo } from '../Models/User.model';
 
 @Injectable()
 export class UserEffect {
