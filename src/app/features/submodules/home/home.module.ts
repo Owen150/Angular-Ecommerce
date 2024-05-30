@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { SearchPipe } from '../shared/Pipes/search.pipe';
+import { ProductCategoriesComponent } from './components/product-categories/product-categories.component';
+import { SearchPipe } from 'src/app/shared/Pipes/search.pipe';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -15,8 +15,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
+
 @NgModule({
-  declarations: [HomeComponent, SearchPipe, CategoriesComponent],
+  declarations: [
+    HomeComponent,
+    SearchPipe,
+    ProductCategoriesComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -29,6 +34,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatDialogModule,
     MatButtonModule
-  ],
+  ]
 })
-export class HomeModule {}
+export class HomeModule { }

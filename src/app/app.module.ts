@@ -9,8 +9,8 @@ import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { ProductComponent } from './features/product/product.component';
-import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { ProductComponent } from './features/Pages/product/product.component';
+import { AnalyticsComponent } from './features/Pages/analytics/analytics.component';
 
 /*Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';

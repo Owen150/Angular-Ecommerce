@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/core/Services/products.service';
 import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/core/Services/products.service';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css'],
+  selector: 'app-product-categories',
+  templateUrl: './product-categories.component.html',
+  styleUrls: ['./product-categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class ProductCategoriesComponent implements OnInit{
   categoryId!: number;
   categoriesData: any;
   searchText: any;
@@ -15,8 +15,8 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private router: Router
-  ) {}
-
+  ){}
+  
   ngOnInit(): void {
     this.getProductCategories();
     this.sortProducts();
@@ -67,4 +67,5 @@ export class CategoriesComponent implements OnInit {
   navigateToProduct(id: any) {
     this.router.navigate(['product', id]);
   }
+
 }

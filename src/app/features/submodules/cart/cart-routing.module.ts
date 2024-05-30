@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { authGuard } from '../core/Guards/auth.guard';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
 const routes: Routes = [
@@ -24,6 +23,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class CartRoutingModule {}
+export class CartRoutingModule { }

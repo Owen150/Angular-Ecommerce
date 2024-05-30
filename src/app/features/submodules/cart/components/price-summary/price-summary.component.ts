@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/core/Services/cart.service';
 
 @Component({
-  selector: 'app-price-details',
-  templateUrl: './price-details.component.html',
-  styleUrls: ['./price-details.component.css'],
+  selector: 'app-price-summary',
+  templateUrl: './price-summary.component.html',
+  styleUrls: ['./price-summary.component.css'],
 })
-export class PriceDetailsComponent implements OnInit {
+export class PriceSummaryComponent implements OnInit {
   // Inherited from the Cart Component
   cartItems: any[] = [];
   cartItemsPrice: any;
@@ -18,10 +18,10 @@ export class PriceDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.cartItems = this.cartService.getAllCartItems();
     this.getBillingDetails();
-    this.cartService.cartSubject.subscribe((items:any)=>{
-      this.cartItems = items
+    this.cartService.cartSubject.subscribe((items: any) => {
+      this.cartItems = items;
       this.getBillingDetails();
-    })
+    });
   }
 
   getBillingDetails() {

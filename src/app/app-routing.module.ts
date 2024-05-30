@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/Guards/auth.guard';
-import { ProductComponent } from './features/product/product.component';
-import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { ProductComponent } from './features/Pages/product/product.component';
+import { AnalyticsComponent } from './features/Pages/analytics/analytics.component';
 import { UserlistComponent } from './shared/UI/user-list-table/userlist.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { permissionsGuard } from './core/Guards/permissions.guard';
@@ -39,18 +39,18 @@ const routes: Routes = [
     } 
   },
   { 
-    path: 'home', 
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-    canActivate: [permissionsGuard] 
-  },
-  { 
     path: 'auth', 
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   { 
+    path: 'home', 
+    loadChildren: () => import('./features/submodules/home/home.module').then(m => m.HomeModule),
+    canActivate: [permissionsGuard] 
+  },
+  { 
     path: 'cart', 
-    loadChildren: () => import('./cart/cart.module').then(m => m.CartModule), 
-    canActivate: [authGuard, permissionsGuard]
+    loadChildren: () => import('./features/submodules/cart/cart.module').then(m => m.CartModule),
+    canActivate: [authGuard, permissionsGuard] 
   },
 ];
 

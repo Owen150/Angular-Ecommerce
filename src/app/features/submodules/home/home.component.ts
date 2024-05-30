@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ProductsService } from '../core/Services/products.service';
+import { ProductsService } from 'src/app/core/Services/products.service';
 import { Router } from '@angular/router';
 
 @Component({

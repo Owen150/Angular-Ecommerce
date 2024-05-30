@@ -3,20 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
 import { CartComponent } from './cart.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { PriceSummaryComponent } from './components/price-summary/price-summary.component';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { PriceDetailsComponent } from './components/price-details/price-details.component';
 import { MatButtonModule } from '@angular/material/button';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 @NgModule({
   declarations: [
     CartComponent,
     CartItemComponent,
-    PriceDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PriceSummaryComponent
   ],
   imports: [
     CommonModule,
