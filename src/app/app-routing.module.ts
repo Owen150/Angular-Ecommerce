@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/Guards/auth.guard';
 import { ProductComponent } from './features/product/product.component';
 import { AnalyticsComponent } from './features/analytics/analytics.component';
-import { UserlistComponent } from './shared/UI/userlist/userlist.component';
+import { UserlistComponent } from './shared/UI/user-list-table/userlist.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { permissionsGuard } from './core/Guards/permissions.guard';
 

@@ -9,12 +9,8 @@ import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/Layouts/header/header.component';
 import { ProductComponent } from './features/product/product.component';
-import { DeleteConfirmationComponent } from './shared/UI/delete-confirmation_modal/delete-confirmation.component';
 import { AnalyticsComponent } from './features/analytics/analytics.component';
-import { UserlistComponent } from './shared/UI/userlist/userlist.component';
-import { RolepopupComponent } from './shared/UI/rolepopup/rolepopup.component';
 
 /*Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -41,6 +37,8 @@ import { UserReducer } from './core/Store/User/User.Reducer';
 import { UserEffect } from './core/Store/User/User.Effects';
 import { AppEffects } from './core/Store/App Actions/App.Effects';
 import { PermissionsService } from './core/Services/permissions.service';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 export function permissionsFactory(
   permissionsService: PermissionsService,
@@ -58,11 +56,7 @@ export function permissionsFactory(
   declarations: [
     AppComponent,
     ProductComponent,
-    HeaderComponent,
-    DeleteConfirmationComponent,
     AnalyticsComponent,
-    UserlistComponent,
-    RolepopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +85,8 @@ export function permissionsFactory(
     StoreModule.forRoot({ user: UserReducer }),
     EffectsModule.forRoot([UserEffect, AppEffects]),
     NgxPermissionsModule.forRoot(),
+    CoreModule,
+    SharedModule
   ],
   providers: [
     {

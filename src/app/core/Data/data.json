@@ -337,6 +337,18 @@
         "rate": 94,
         "count": 83
       }
+    },
+    {
+      "id": "3000",
+      "title": "Shared Test",
+      "price": 30,
+      "description": "Shared UI",
+      "category": "men's clothing",
+      "image": "https://pictures-kenya.jijistatic.com/14606343_vans-maroon_620x620.webp",
+      "rating": {
+        "rate": 4.9,
+        "count": 80
+      }
     }
   ],
   "user": [

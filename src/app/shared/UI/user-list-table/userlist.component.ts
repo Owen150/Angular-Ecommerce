@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Users } from 'src/app/core/Store/Models/User.model';
 import { getUsersList } from 'src/app/core/Store/User/User.Selector';
 import { getUsers } from 'src/app/core/Store/User/User.Action';
-import { RolepopupComponent } from '../rolepopup/rolepopup.component';
+import { RolepopupComponent } from '../role-popup-modal/rolepopup.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { PermissionsService } from 'src/app/core/Services/permissions.service';
