@@ -10,11 +10,11 @@ import {
 } from '@angular/animations';
 
 /* Service import */
-import { ProductsService } from '../../Services/products.service';
-import { CartService } from '../../Services/cart.service';
+import { ProductsService } from '../../../core/Services/products.service';
+import { CartService } from '../../../core/Services/cart.service';
 
 /*Component imports */
-import { CreateProductComponent } from '../../../shared/UI/create-product-form/create-product.component';
+import { CreateProductComponent } from '../../UI/create-product-form/create-product.component';
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
