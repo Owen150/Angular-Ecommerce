@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { UserService } from '../../Services/user.service';
+import { UserService } from '../../core/Services/user.service';
 import {
   beginLogin,
   beginRegister,

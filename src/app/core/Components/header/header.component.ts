@@ -20,9 +20,9 @@ import { CreateProductComponent } from '../../../shared/UI/create-product-form/c
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { RoleAccess, Userinfo } from 'src/app/core/Store/Models/User.model';
-import { getMenuByRole } from 'src/app/core/Store/User/User.Selector';
-import { fetchMenu } from 'src/app/core/Store/User/User.Action';
+import { RoleAccess, Userinfo } from 'src/app/store/Models/User.model';
+import { getMenuByRole } from 'src/app/store/User/User.Selector';
+import { fetchMenu } from 'src/app/store/User/User.Action';
 
 @Component({
   selector: 'app-header',
@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     const currentRoute = this.router.url;
-    if (currentRoute === '/auth/login' || currentRoute === '/auth/signup') {
+    if (currentRoute === '/login' || currentRoute === '/signup') {
       this.isMenuVisible = false;
     } else {
       this.isMenuVisible = true;

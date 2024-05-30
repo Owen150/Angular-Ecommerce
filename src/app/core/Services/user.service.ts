@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RoleAccess, Roles, Usercred, Userinfo, Users } from '../Store/Models/User.model';
+import { RoleAccess, Roles, Usercred, Userinfo, Users } from '../../store/Models/User.model';
 import { Observable, switchMap } from 'rxjs';
 
 @Injectable({

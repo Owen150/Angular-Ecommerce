@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,12 +33,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { UserReducer } from './core/Store/User/User.Reducer';
-import { UserEffect } from './core/Store/User/User.Effects';
-import { AppEffects } from './core/Store/App Actions/App.Effects';
+import { UserReducer } from './store/User/User.Reducer';
+import { UserEffect } from './store/User/User.Effects';
+import { AppEffects } from './store/App Actions/App.Effects';
 import { PermissionsService } from './core/Services/permissions.service';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ProductInterceptorService } from './core/Interceptors/product-interceptor.service';
 
 export function permissionsFactory(
   permissionsService: PermissionsService,
@@ -90,7 +91,8 @@ export function permissionsFactory(
   ],
   providers: [
     {
-      provide: APP_INITIALIZER,
+      provide: {APP_INITIALIZER, HTTP_INTERCEPTORS},
+      useClass: ProductInterceptorService,
       useFactory: permissionsFactory,
       deps: [PermissionsService, NgxPermissionsService],
       multi: true,

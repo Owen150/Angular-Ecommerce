@@ -6,6 +6,8 @@ import { AnalyticsComponent } from './features/Pages/analytics/analytics.compone
 import { UserlistComponent } from './shared/UI/user-list-table/userlist.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { permissionsGuard } from './core/Guards/permissions.guard';
+import { LoginComponent } from './shared/UI/login/login.component';
+import { SignupComponent } from './shared/UI/signup/signup.component';
 
 const routes: Routes = [
   { 
@@ -39,10 +41,6 @@ const routes: Routes = [
     } 
   },
   { 
-    path: 'auth', 
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-  },
-  { 
     path: 'home', 
     loadChildren: () => import('./features/submodules/home/home.module').then(m => m.HomeModule),
     canActivate: [permissionsGuard] 
@@ -52,6 +50,8 @@ const routes: Routes = [
     loadChildren: () => import('./features/submodules/cart/cart.module').then(m => m.CartModule),
     canActivate: [authGuard, permissionsGuard] 
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent}
 ];
 
 @NgModule({
