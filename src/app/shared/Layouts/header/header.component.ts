@@ -11,7 +11,7 @@ import {
 
 /* Service import */
 import { ProductsService } from '../../../features/submodules/home/products.service';
-import { CartService } from '../../../features/submodules/cart/cart.service';
+import { CartService } from '../../../features/submodules/cart/services/cart.service';
 
 /*Component imports */
 import { CreateProductComponent } from '../../UI/create-product-form/create-product.component';

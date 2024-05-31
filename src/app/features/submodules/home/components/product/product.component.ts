@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../../../../../shared/UI/create-product-form/create-product.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteConfirmationComponent } from 'src/app/shared/UI/delete-confirmation-modal/delete-confirmation.component';
-import { CartService } from 'src/app/features/submodules/cart/cart.service';
+import { CartService } from 'src/app/features/submodules/cart/services/cart.service';
 
 @Component({
   selector: 'app-product',

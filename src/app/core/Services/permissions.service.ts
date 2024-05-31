@@ -10,10 +10,6 @@ export class PermissionsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // public delay() {
-  //   return new Promise((resolve) => setTimeout(resolve, 500));
-  // }
-
   public loadPermissions() {
     return this.httpClient
       .get(`${environment.userURL}`)

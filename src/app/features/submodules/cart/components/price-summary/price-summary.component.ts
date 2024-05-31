@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/features/submodules/cart/cart.service';
+import { CartService } from 'src/app/features/submodules/cart/services/cart.service';
 
 @Component({
   selector: 'app-price-summary',

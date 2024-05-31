@@ -7,12 +7,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
-/*Component imports */
+/* Component imports */
 import { AppComponent } from './app.component';
 import { ProductComponent } from './features/submodules/home/components/product/product.component';
 import { AnalyticsComponent } from './features/Pages/analytics/analytics.component';
 
-/*Angular Material imports */
+/* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -40,18 +40,16 @@ import { PermissionsService } from './core/Services/permissions.service';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
-import { Product } from './core/Interceptors/product.interceptor';
+import { ProductInterceptor } from './core/Interceptors/product.interceptor';
 
 export function permissionsFactory(
   permissionsService: PermissionsService,
   ngxPermissionsService: NgxPermissionsService
 ) {
-  return () => {
-    return permissionsService.loadPermissions().then((data) => {
-      ngxPermissionsService.loadPermissions(data);
-      return true;
-    });
-  };
+  return () => permissionsService.loadPermissions().then((data) => {
+    ngxPermissionsService.loadPermissions(data);
+    return true;
+  });
 }
 
 @NgModule({
@@ -91,13 +89,18 @@ export function permissionsFactory(
     SharedModule
   ],
   providers: [
+    PermissionsService,
     {
-      provide: { APP_INITIALIZER, HTTP_INTERCEPTORS },
-      useClass: Product,
+      provide: APP_INITIALIZER,
       useFactory: permissionsFactory,
       deps: [PermissionsService, NgxPermissionsService],
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ProductInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
