@@ -9,7 +9,7 @@ import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { ProductComponent } from './features/Pages/product/product.component';
+import { ProductComponent } from './features/submodules/home/components/product/product.component';
 import { AnalyticsComponent } from './features/Pages/analytics/analytics.component';
 
 /*Angular Material imports */
@@ -40,7 +40,7 @@ import { PermissionsService } from './core/Services/permissions.service';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
-import { ProductInterceptorService } from './core/Interceptors/product-interceptor.service';
+import { Product } from './core/Interceptors/product.interceptor';
 
 export function permissionsFactory(
   permissionsService: PermissionsService,
@@ -92,11 +92,11 @@ export function permissionsFactory(
   ],
   providers: [
     {
-      provide: {APP_INITIALIZER, HTTP_INTERCEPTORS},
-      useClass: ProductInterceptorService,
+      provide: { APP_INITIALIZER, HTTP_INTERCEPTORS },
+      useClass: Product,
       useFactory: permissionsFactory,
       deps: [PermissionsService, NgxPermissionsService],
-      multi: true,
+      multi: true
     },
   ],
   bootstrap: [AppComponent],

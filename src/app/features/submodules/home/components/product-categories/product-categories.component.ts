@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from 'src/app/core/Services/products.service';
+import { ProductsService } from 'src/app/features/submodules/home/products.service';
 
 @Component({
   selector: 'app-product-categories',

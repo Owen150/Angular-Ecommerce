@@ -2,7 +2,7 @@ import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteConfirmationComponent } from '../../shared/UI/delete-confirmation-modal/delete-confirmation.component';
+import { DeleteConfirmationComponent } from '../../../shared/UI/delete-confirmation-modal/delete-confirmation.component';
 
 @Injectable({
   providedIn: 'root',

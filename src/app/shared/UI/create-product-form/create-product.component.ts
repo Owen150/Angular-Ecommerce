@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
-import { ProductsService } from 'src/app/core/Services/products.service';
+import { ProductsService } from 'src/app/features/submodules/home/products.service';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
@@ -16,10 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CreateProductComponent implements OnInit {
   myForm!: FormGroup;
-
   @Input() productData!: any;
   @Output() productUpdated = new EventEmitter<string>(); // EventEmitter for product update
-
   updateMode: boolean = false;
 
   constructor(

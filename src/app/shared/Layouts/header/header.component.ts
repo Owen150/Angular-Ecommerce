@@ -10,8 +10,8 @@ import {
 } from '@angular/animations';
 
 /* Service import */
-import { ProductsService } from '../../../core/Services/products.service';
-import { CartService } from '../../../core/Services/cart.service';
+import { ProductsService } from '../../../features/submodules/home/products.service';
+import { CartService } from '../../../features/submodules/cart/cart.service';
 
 /*Component imports */
 import { CreateProductComponent } from '../../UI/create-product-form/create-product.component';

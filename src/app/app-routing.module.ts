@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/Guards/auth.guard';
-import { ProductComponent } from './features/Pages/product/product.component';
+import { ProductComponent } from './features/submodules/home/components/product/product.component';
 import { AnalyticsComponent } from './features/Pages/analytics/analytics.component';
 import { UserlistComponent } from './shared/UI/user-list-table/userlist.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
