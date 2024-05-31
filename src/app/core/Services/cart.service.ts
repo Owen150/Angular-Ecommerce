@@ -90,7 +90,7 @@ export class CartService {
     });
     return billingDetails;
   }
-
+  
   isProductInCart(product: any): boolean {
     // Checks if the product is already in the cart
     return this.cartProducts.some(item => item.id === product.id);

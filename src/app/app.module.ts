@@ -39,6 +39,7 @@ import { AppEffects } from './store/App Actions/App.Effects';
 import { PermissionsService } from './core/Services/permissions.service';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+
 import { ProductInterceptorService } from './core/Interceptors/product-interceptor.service';
 
 export function permissionsFactory(

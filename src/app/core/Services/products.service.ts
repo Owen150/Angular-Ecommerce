@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, map } from 'rxjs';
+import { environment } from 'src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private baseURL = 'http://localhost:4000/products';
-  private categoriesURL = 'https://fakestoreapi.com/products/categories';
-
   products: any[] = [];
   filteredProducts: any;
 
@@ -28,7 +26,7 @@ export class ProductsService {
 
   // All/Filtered Products Array
   getAllProducts() {
-    return this.httpClient.get(this.baseURL).pipe(
+    return this.httpClient.get(`${environment.baseURL}`).pipe(
       map((product: any) => {
         this.products = product;
         this.filteredProducts = this.products;
@@ -38,20 +36,20 @@ export class ProductsService {
   }
 
   getProduct(id: any): Observable<any> {
-    return this.httpClient.get(`${this.baseURL}/${id}`);
+    return this.httpClient.get(`${environment.baseURL}/${id}`);
   }
 
   createProduct(product: any, category: string): Observable<Object> {
     product.category = category;
-    return this.httpClient.post(`${this.baseURL}`, product);
+    return this.httpClient.post(`${environment.baseURL}`, product);
   }
 
   updateProduct(id: any, product: any) {
-    return this.httpClient.patch(`${this.baseURL}/${id}`, product);
+    return this.httpClient.patch(`${environment.baseURL}/${id}`, product);
   }
 
   deleteProduct(id: any): Observable<Object> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
+    return this.httpClient.delete(`${environment.baseURL}/${id}`);
   }
 
   // Get All Product Categories from the products using a flatMap 
@@ -81,7 +79,7 @@ export class ProductsService {
   }
 
   getAllProductCategories(): Observable<any> {
-    return this.httpClient.get<any>(this.categoriesURL);
+    return this.httpClient.get<any>(`${environment.categoriesURL}`);
   }
 
   // Get Sort Criterion i.e Low to High or Vice-versa
@@ -143,6 +141,6 @@ export class ProductsService {
 
   // Analytics Component
   showData(){
-    return this.httpClient.get(this.baseURL);
+    return this.httpClient.get(`${environment.baseURL}`);
   }
 }

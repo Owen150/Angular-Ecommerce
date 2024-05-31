@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class PermissionsService {
-  private userURL = 'http://localhost:4000/user';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -15,7 +16,7 @@ export class PermissionsService {
 
   public loadPermissions() {
     return this.httpClient
-      .get(this.userURL)
+      .get(`${environment.userURL}`)
       .toPromise()
       .then(() => {
         return ['ADMIN', 'USER', 'MANAGER', 'SUPPLIER'];

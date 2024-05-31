@@ -349,6 +349,18 @@
         "rate": 4.9,
         "count": 80
       }
+    },
+    {
+      "id": "c2d8",
+      "title": "Thursday",
+      "price": 40,
+      "description": "Test",
+      "category": "men's clothing",
+      "image": "https://images.timberland.com/is/image/timberland/10061713-HERO?hei=650&wid=650&qlt=50&resMode=sharp2&op_usm=0.9,1.0,8,0",
+      "rating": {
+        "rate": 86,
+        "count": 89
+      }
     }
   ],
   "user": [
@@ -393,7 +405,7 @@
       "email": "pajutu@mailinator.com",
       "phone": "+1 (949) 941-8204",
       "gender": "other",
-      "role": "manager",
+      "role": "user",
       "status": true
     },
     {
@@ -415,7 +427,7 @@
       "email": "lebidabap@mailinator.com",
       "phone": 809,
       "gender": "female",
-      "role": "user",
+      "role": "manager",
       "status": true
     }
   ],

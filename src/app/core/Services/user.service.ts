@@ -2,24 +2,24 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RoleAccess, Roles, Usercred, Userinfo, Users } from '../../store/Models/User.model';
 import { Observable, switchMap } from 'rxjs';
+import { environment } from 'src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private baseURL = 'http://localhost:4000/user';
 
   constructor(private httpClient: HttpClient) {}
 
   // Register new user
   userRegistration(userdata: Users) {
-    return this.httpClient.post(this.baseURL, userdata);
+    return this.httpClient.post(`${environment.userURL}`, userdata);
   }
 
   // Custom Login URL
   userLogin(userdata: Usercred): Observable<Userinfo[]> {
     return this.httpClient.get<Userinfo[]>(
-      this.baseURL +
+      environment.userURL +
         '?username=' +
         userdata.username +
         '&password=' +
@@ -30,7 +30,7 @@ export class UserService {
   // Check for duplicate user registration
   duplicateUserName(username: string): Observable<Userinfo[]> {
     return this.httpClient.get<Userinfo[]>(
-      this.baseURL + '?username=' + username
+      `${environment.userURL}` + '?username=' + username
     );
   }
 
@@ -38,37 +38,36 @@ export class UserService {
   // Function takes the userrole and returns a list of menus based on the role i.e RoleAccess[]
   getMenuByRole(userrole: string): Observable<RoleAccess[]> {
     return this.httpClient.get<RoleAccess[]>(
-      'http://localhost:4000/roleaccess?role=' + userrole
+      `${environment.roleAccessURL}` + userrole
     );
   }
 
   // Block URL menu access by Role
   hasMenuAccess(userrole: string, menuname: string): Observable<RoleAccess[]> {
     return this.httpClient.get<RoleAccess[]>(
-      'http://localhost:4000/roleaccess?role=' + userrole + '&menu=' + menuname
+      `${environment.roleAccessURL}` + userrole + '&menu=' + menuname
     );
   }
 
   // Get All Users
   getAllUsers(): Observable<Users[]> {
-    return this.httpClient.get<Users[]>(this.baseURL);
+    return this.httpClient.get<Users[]>(`${environment.userURL}`);
   }
 
   // Get All Roles
   getAllRoles(): Observable<Roles[]> {
-    return this.httpClient.get<Roles[]>('http://localhost:4000/role');
+    return this.httpClient.get<Roles[]>(`${environment.roleURL}`);
   }
 
   // Update User Role
   updateUserRole(userId: number, role: string){
-    return this.httpClient.get<Users>(this.baseURL+'/'+userId).pipe(
+    return this.httpClient.get<Users>(`${environment.userURL}`+'/'+userId).pipe(
       switchMap((data) => {
         data.role = role;
-        return this.httpClient.put(this.baseURL+'/'+userId, data);
+        return this.httpClient.put(`${environment.userURL}`+'/'+userId, data);
       })
     )
   }
-
 
   // Save user data to local storage
   saveUserToLocalStorage(userdata: Userinfo) {

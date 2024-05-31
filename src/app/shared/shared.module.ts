@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { AppRoutingModule } from '../app-routing.module';
+
 import { CreateProductComponent } from './UI/create-product-form/create-product.component';
 import { DeleteConfirmationComponent } from './UI/delete-confirmation-modal/delete-confirmation.component';
 import { RolepopupComponent } from './UI/role-popup-modal/rolepopup.component';
 import { UserlistComponent } from './UI/user-list-table/userlist.component';
+
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -16,7 +20,6 @@ import { LoginComponent } from './UI/login/login.component';
 import { SignupComponent } from './UI/signup/signup.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AppRoutingModule } from '../app-routing.module';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -51,7 +54,8 @@ import { MatListModule } from '@angular/material/list';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    NgxPermissionsModule.forRoot()
   ]
 })
 export class SharedModule { }
