@@ -10,7 +10,7 @@ import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 /* Component imports */
 import { AppComponent } from './app.component';
 import { ProductComponent } from './features/submodules/home/components/product/product.component';
-import { AnalyticsComponent } from './features/Pages/analytics/analytics.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
 
 /* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';

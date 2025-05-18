@@ -20,16 +20,15 @@
         padding-top: 20px;
         color: black;
         background-color: white;
-        transition: box-shadow 0.3s;
         position: relative;
       }
   
       .example-card.selected {
-        border: 5px solid blue; /* Adjust the border properties as needed */
+        border: 5px solid blue;
       }
   
       .example-card:hover {
-        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5); /* Add a shadow on hover */
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
       }
   
       .image-container {
@@ -40,8 +39,8 @@
       }
   
       .card-content {
-        position: absolute; /* Set the position to absolute */
-        bottom: 10px; /* Adjust the distance from the bottom as needed */
+        position: absolute;
+        bottom: 10px;
         text-align: left;
         line-height: 1.7;
         padding: 5px;
@@ -95,6 +94,3 @@
     margin-right: 30px;
     width: 155px;
   }
-  
-  /* .trending-movies {
-  } */
