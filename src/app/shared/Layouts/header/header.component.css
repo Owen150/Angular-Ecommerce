@@ -1,12 +1,7 @@
 .header-container {
-  height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #ebaaaa;
-  padding: 0 12px;
   position: sticky;
-  z-index: 1;
+  /* z-index: 1; */
   top: 0;
 
   .main-icon {
@@ -30,10 +25,10 @@
   .header-search {
     display: flex;
     align-items: center;
-    background-color: white;
+    /* background-color: white; */
     margin-left: 140px;
-    border-radius: 6px;
-    padding: 6px;
+    /* border-radius: 6px; */
+    /* padding: 6px; */
   }
 
   .right-header-nav {

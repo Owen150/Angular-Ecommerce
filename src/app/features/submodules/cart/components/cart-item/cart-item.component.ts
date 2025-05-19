@@ -30,7 +30,6 @@ export class CartItemComponent implements OnInit {
     this.snackBar.open('Product quantity updated successfully', 'Close', {
       duration: 4000,
     });
-    // Update price details
     this.getPriceDetails(productData);
   }
 
@@ -39,7 +38,6 @@ export class CartItemComponent implements OnInit {
     this.snackBar.open('Product quantity updated successfully', 'Close', {
       duration: 4000,
     });
-    // Update price details
     this.getPriceDetails(productData);
   }
 

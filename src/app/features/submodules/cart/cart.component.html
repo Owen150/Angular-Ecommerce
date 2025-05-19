@@ -1,6 +1,4 @@
-<!-- Check Container -->
 <div class="container">
-    <!-- Empty Cart Content -->
     <div class="empty" *ngIf="!cartItems.length">
       <mat-card class="empty-cart">
         <div mat-card-content class="empty-cart-content">
@@ -14,13 +12,12 @@
           class="add-to-cart-button"
           [routerLink]="'/home'"
         >
-          Shop Now
+          <span>Shop Now</span>
           <mat-icon>shopping_cart</mat-icon>
         </button>
       </div>
     </div>
   
-    <!-- Cart Content -->
     <div class="cart-content" *ngIf="cartItems.length">
       <div class="items-container">
         <app-cart-item

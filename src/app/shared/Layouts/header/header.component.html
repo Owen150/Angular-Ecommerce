@@ -1,34 +1,33 @@
 <div *ngIf="isMenuVisible">
-  <mat-toolbar class="header-container">
+  <mat-toolbar class="d-flex align-items-center justify-content-between header-container">
     <div class="main-icon">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <a routerLink="home" class="main-name">Shop</a>
+      <a routerLink="home" class="main-name"><span>Shop</span></a>
     </div>
 
     <form #searchBox="ngForm">
       <div class="header-search">
-        <mat-icon>search</mat-icon>
         <input
           matInput
           class="search-box"
-          placeholder="Search Product"
+          placeholder="Find Item..."
           type="text"
           name="searchText"
           [(ngModel)]="searchText"
           (keyup)="searchProduct(searchText)"
         />
+        <!-- <mat-icon>search</mat-icon> -->
       </div>
     </form>
 
     <div class="right-header-nav">
       <div routerLink="login" class="link">
         <mat-icon>person_outline</mat-icon>
-        <a class="link">Login</a>
+        <a class="link"><span>Login</span></a>
       </div>
 
-      <!-- Cart Link -->
       <div routerLink="cart" class="link">
         <mat-icon>add_shopping_cart</mat-icon>
         <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
@@ -40,7 +39,7 @@
     <mat-drawer
       opened="false"
       mode="side"
-      style="width: 230px; background-color: #ffe6c6"
+      style="width: auto; background-color: #ffe6c6"
       #drawer
     >
       <mat-nav-list style="margin-left: 8px">
@@ -48,7 +47,7 @@
           <div>
             <mat-list-item>
               <a routerLink="home" class="link"
-                ><mat-icon>home</mat-icon>Home</a
+                ><mat-icon>home</mat-icon><span>Home</span></a
               >
             </mat-list-item>
 
@@ -59,16 +58,15 @@
                 style="margin: auto"
               >
                 <mat-icon>note_add</mat-icon>
-                Add Product
+                <span>Add Product</span>
               </div>
             </mat-list-item>
 
-            <!-- Sort Menu -->
             <div (click)="showSortMenu()">
               <mat-list-item>
                 <a class="link">
                   <mat-icon>sort</mat-icon>
-                  Sort Products
+                  <span>Sort Products</span>
                   <div style="margin-left: auto">
                     <mat-icon>expand_more</mat-icon>
                   </div>
@@ -87,12 +85,11 @@
               </mat-nav-list>
             </div>
 
-            <!-- Price Filters -->
             <div (click)="showPriceFilters()">
               <mat-list-item>
                 <a class="link">
                   <mat-icon>sort</mat-icon>
-                  Price Filter
+                  <span>Price Filter</span>
                   <div style="margin-left: auto">
                     <mat-icon>expand_more</mat-icon>
                   </div>
@@ -113,12 +110,11 @@
               </div>
             </mat-nav-list>
 
-            <!-- Categories Dropdown -->
             <div (click)="showCategories()">
               <mat-list-item>
                 <a routerLink="home/categories" class="link">
                   <mat-icon>menu</mat-icon>
-                  Categories
+                  <span>Categories</span>
                   <div style="margin-left: auto">
                     <mat-icon>expand_more</mat-icon>
                   </div>
@@ -139,7 +135,7 @@
 
             <mat-list-item *ngFor="let item of menuList">
               <a routerLink="{{ item.menu }}" class="link"
-                ><mat-icon>build</mat-icon>{{ item.menu }}</a
+                ><mat-icon>build</mat-icon><span>{{ item.menu }}</span></a
               >
             </mat-list-item>
 

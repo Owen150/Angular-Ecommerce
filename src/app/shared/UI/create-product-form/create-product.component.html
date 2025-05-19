@@ -1,12 +1,12 @@
-<div mat-dialog-title class="title">
-  <h1>Add Product</h1>
+<div mat-dialog-title class="title text-center">
+  <span>Add Product</span>
 </div>
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
   <div mat-dialog-content class="content">
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Product Title</mat-label>
+        <mat-label><span>Product Title</span></mat-label>
         <input
           matInput
           type="text"
@@ -24,7 +24,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Product Price</mat-label>
+        <mat-label><span>Product Price</span></mat-label>
         <input
           matInput
           type="number"
@@ -44,7 +44,8 @@
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Product Category</mat-label>
+        <div class="col-md-12">
+          <mat-label><span>Product Category</span></mat-label>
         <mat-select
           class="form-control"
           id="category"
@@ -66,10 +67,12 @@
           "
           >Product Category Required!</mat-hint
         >
+        </div>
+        
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Product Image src</mat-label>
+        <mat-label><span>Product Image Src</span></mat-label>
         <input
           matInput
           type="text"
@@ -89,7 +92,7 @@
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Product Rating</mat-label>
+        <mat-label><span>Product Rating</span></mat-label>
         <input
           matInput
           type="number"
@@ -107,7 +110,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Product Count</mat-label>
+        <mat-label><span>Product Count</span></mat-label>
         <input
           matInput
           type="number"
@@ -127,7 +130,7 @@
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Product Description</mat-label>
+        <mat-label><span>Product Description</span></mat-label>
         <textarea
           matInput
           type="text"
@@ -156,7 +159,7 @@
       color="warn"
       (click)="dialogRef.close('Close click')"
     >
-      Cancel
+      <span>Cancel</span>
     </button>
     <button
       mat-raised-button
@@ -164,7 +167,7 @@
       [disabled]="!myForm.valid"
       type="submit"
     >
-      Submit
+      <span>Submit</span>
     </button>
   </div>
 </form>

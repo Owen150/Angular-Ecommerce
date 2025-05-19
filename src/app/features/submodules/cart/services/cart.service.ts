@@ -32,11 +32,9 @@ export class CartService {
   }
 
   increaseProductCountInCart(product: any) {
-    //Will give us a particular index object of the cartProducts array
     let index = this.cartProducts.findIndex((productData) => {
       return productData.id === product.id;
     });
-    // Update affected values
     this.cartProducts[index].count++;
     this.getPriceDetailsInCartItem(product);
     this.cartSubject.next(this.cartProducts);
@@ -58,23 +56,17 @@ export class CartService {
   
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        // Find the item index
         const index = this.cartProducts.findIndex((productData) => productData.id === product.id);
         if (index !== -1) {
-          // Remove the item from the cartProducts array using the index
           this.cartProducts.splice(index, 1);
-          // Sending the updated cartProduct value/s
           this.cartSubject.next(this.cartProducts);
-          // Emitting event indicating successful deletion
           this.productDeletedSubject.next(this.cartProducts);
         }
       }
     });
   }
 
-  //Billing Details - Called in Price Details Component
   getBilling(cartItems: any) {
-    // A single object with various attributes
     let billingDetails = {
       price: 0,
       delivery: 0,
@@ -92,7 +84,6 @@ export class CartService {
   }
   
   isProductInCart(product: any): boolean {
-    // Checks if the product is already in the cart
     return this.cartProducts.some(item => item.id === product.id);
   }
 }
