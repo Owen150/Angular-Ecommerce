@@ -1,92 +1,63 @@
-.home-container {
-    background-color: #f5f5dc;
-    
-    .mat-card-container {
-      margin-left: 20px;
-      margin-right: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-  
-      .example-card {
-        min-width: 280px;
-        height: 310px;
-        border-radius: 10px;
-        margin-bottom: 45px;
-        padding-top: 20px;
-        color: black;
-        background-color: white;
-        position: relative;
-      }
-  
-      .example-card.selected {
-        border: 5px solid blue;
-      }
-  
-      .example-card:hover {
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-      }
-  
-      .image-container {
-        padding-top: 20px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-      }
-  
-      .card-content {
-        position: absolute;
-        bottom: 10px;
-        text-align: left;
-        line-height: 1.7;
-        padding: 5px;
-      }
-  
-      .card-actions {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        text-align: right;
-      }
-    }
-  }
-  
-  .top {
-    /* display: flex;
-    flex-direction: row; */
-    align-items: center;
-    justify-content: space-between;
-    color: black;
-  
-    h4 {
-      text-transform: uppercase;
-      font-weight: bold;
-      border-left: 7px solid #ff9900;
-      padding-left: 10px;
-      margin-top: 15px;
-      margin-left: 44px;
-      color: black;
-    }
-  }
-  .product-title {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .mat-primary {
-    color: orangered;
-  }
-  
-  .currency {
-    font-weight: bold;
-    color: orangered;
-  }
-  
-  .example-form-field {
-    margin-top: 20px;
-    margin-right: 30px;
-    width: 155px;
-  }
+.example-card {
+  min-width: 280px;
+  height: 310px;
+  border-radius: 10px;
+  margin-bottom: 45px;
+  padding-top: 20px;
+  color: black;
+  background-color: white;
+  position: relative;
+}
+
+.example-card.selected {
+  border: 5px solid blue;
+}
+
+.example-card:hover {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.image-container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 10px;
+  text-align: left;
+  line-height: 1.7;
+  padding: 5px;
+}
+
+.card-actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+}
+
+.product-title {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-primary {
+  color: orangered;
+}
+
+.currency {
+  font-weight: bold;
+  color: orangered;
+}
+
+.example-form-field {
+  margin-top: 20px;
+  margin-right: 30px;
+  width: 155px;
+}
