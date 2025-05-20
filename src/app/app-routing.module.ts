@@ -8,50 +8,64 @@ import { NgxPermissionsGuard } from 'ngx-permissions';
 import { permissionsGuard } from './core/Guards/permissions.guard';
 import { LoginComponent } from './shared/UI/login/login.component';
 import { SignupComponent } from './shared/UI/signup/signup.component';
+import { TemplatesComponent } from './features/submodules/templates/templates/templates.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    redirectTo: 'home', 
+  {
+    path: '',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
-  { 
-    path: 'product/:id', 
+  {
+    path: 'product/:id',
     component: ProductComponent,
-    canActivate: [permissionsGuard] 
+    canActivate: [permissionsGuard],
   },
-  { 
-    path: 'user', 
+  {
+    path: 'user',
     component: UserlistComponent,
     canActivate: [authGuard, NgxPermissionsGuard],
     data: {
       permissions: {
-        only: ['ADMIN', 'MANAGER']
-      }
-    }
+        only: ['ADMIN', 'MANAGER'],
+      },
+    },
   },
-  { 
-    path: 'analytics', 
-    component: AnalyticsComponent, 
+  {
+    path: 'analytics',
+    component: AnalyticsComponent,
     canActivate: [authGuard, NgxPermissionsGuard],
     data: {
       permissions: {
-        only: ['ADMIN', 'MANAGER']
-      }
-    } 
+        only: ['ADMIN', 'MANAGER'],
+      },
+    },
   },
-  { 
-    path: 'home', 
-    loadChildren: () => import('./features/submodules/home/home.module').then(m => m.HomeModule),
-    canActivate: [permissionsGuard] 
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./features/submodules/home/home.module').then(
+        (m) => m.HomeModule
+      ),
+    canActivate: [permissionsGuard],
   },
-  { 
-    path: 'cart', 
-    loadChildren: () => import('./features/submodules/cart/cart.module').then(m => m.CartModule),
-    canActivate: [authGuard, permissionsGuard] 
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./features/submodules/cart/cart.module').then(
+        (m) => m.CartModule
+      ),
+    canActivate: [authGuard, permissionsGuard],
   },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent}
+  { path: 'signup', component: SignupComponent },
+  {
+    path: 'templates',
+    loadChildren: () =>
+      import('./features/submodules/templates/templates.module').then(
+        (m) => m.TemplatesModule
+      ),
+  },
 ];
 
 @NgModule({
