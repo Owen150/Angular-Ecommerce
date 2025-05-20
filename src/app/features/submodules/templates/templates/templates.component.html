@@ -1,9 +1,37 @@
-<ng-template #invoiceTemplate>
-  <h2>Invoice Template</h2>
+<select #templateSelect class="form-select w-auto mb-3" (change)="loadTemplate(templateSelect.value)">
+  <option value="invoice">Invoice</option>
+  <option value="report">Report</option>
+</select>
+
+<button class="btn btn-success mb-3" (click)="exportToPDF()">Export to PDF</button>
+
+<div id="template-render">
+  <ng-container *ngTemplateOutlet="activeTemplate; context: templateContext"></ng-container>
+</div>
+
+<!-- Quotation Document Template -->
+<ng-template #invoice let-data="data">
+  <h2>Invoice for {{ data.customerName }}</h2>
+  <p><strong>Date:</strong> {{ data.invoiceDate }}</p>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data.items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.qty }}</td>
+        <td>{{ item.price | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
 </ng-template>
 
-<ng-template #reportTemplate>
-  <h2>Report Template</h2>
+<!-- Report Template -->
+<ng-template #report let-data="data">
+  <h2>{{ data.title }}</h2>
+  <p><strong>Author:</strong> {{ data.author }}</p>
+  <p><strong>Date:</strong> {{ data.dateCreated }}</p>
+  <p>{{ data.content }}</p>
 </ng-template>
-
-<ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
