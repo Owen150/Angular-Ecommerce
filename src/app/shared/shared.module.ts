@@ -27,10 +27,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './Layouts/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { LimitWordsPipePipe } from './Pipes/limit-words-pipe.pipe';
 
 @NgModule({
   declarations: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, LimitWordsPipePipe
   ],
   exports: [
     HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent
