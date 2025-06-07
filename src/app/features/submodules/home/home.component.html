@@ -6,7 +6,7 @@
   <div class="col-md-12 mt-4">  
     <div class="d-flex flex-wrap justify-content-around">
       <mat-card
-        class="example-card"
+        class="product-card"
         *ngFor="
           let product of (productData | search : searchText)?.slice(
             0,
@@ -15,7 +15,7 @@
         "
         (click)="navigateToProduct(product.id)"
       >
-        <div class="image-container">
+        <div class="d-flex align-items-center justify-content-center p-3">
           <img
             mat-card-image
             [src]="product.image"
@@ -24,16 +24,25 @@
             alt=""
           />
         </div>
-        <mat-card-content
+        <!-- <mat-card-content
           class="card-content"
           style="justify-content: space-between"
         >
           {{ product.title }} <br />
           <p class="currency">{{ product.price * 130 | currency : "Ksh " }}</p>
+        </mat-card-content> -->
+
+        <mat-card-content>
+          <div class="d-flex flex-wrap text-center justify-content-center align-items-center">
+            {{ product.title }}
+          </div>
         </mat-card-content>
-        <mat-card-actions class="card-actions">
+
+        <mat-card-actions class="d-flex justify-content-between align-items-center position-absolute bottom-0 w-100 p-2">
+          <p class="currency mb-0">{{ product.price * 130 | currency : 'Ksh ' }}</p>
           <mat-icon color="primary">add_shopping_cart</mat-icon>
         </mat-card-actions>
+        
       </mat-card>
     </div>
   </div>

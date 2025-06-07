@@ -1,5 +1,5 @@
-.example-card {
-  min-width: 280px;
+.product-card {
+  width: 280px;
   height: 310px;
   border-radius: 10px;
   margin-bottom: 45px;
@@ -7,45 +7,39 @@
   color: black;
   background-color: white;
   position: relative;
+  cursor: pointer;
 }
 
-.example-card.selected {
+.product-card.selected {
   border: 5px solid blue;
 }
 
-.example-card:hover {
+.product-card:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.image-container {
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.card-content {
+/* .card-content {
   position: absolute;
   bottom: 10px;
   text-align: left;
   line-height: 1.7;
   padding: 5px;
-}
+} */
 
-.card-actions {
+/* .card-actions {
   position: absolute;
   bottom: 0;
   right: 0;
   text-align: right;
-}
+} */
 
-.product-title {
+/* .product-title {
   margin-bottom: 10px;
   margin-top: 10px;
   text-align: center;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .mat-primary {
   color: orangered;
