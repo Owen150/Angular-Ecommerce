@@ -125,10 +125,9 @@
               <div class="price-filter-list">
                 <mat-list-item
                   *ngFor="let category of categories"
-                  class="dropdown-list"
-                  (click)="filterProductsByCategory(category)"
+                  class="dropdown-list"                  
                 >
-                  <p class="price-filter">{{ category }}</p>
+                  <p class="price-filter" (click)="filterProductsByCategory(category)">{{ category }}</p>
                 </mat-list-item>
               </div>
             </mat-nav-list>
