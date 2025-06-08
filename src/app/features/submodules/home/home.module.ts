@@ -15,13 +15,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LimitWordsPipePipe } from 'src/app/shared/Pipes/limit-words-pipe.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     SearchPipe,
     ProductCategoriesComponent,
-    LimitWordsPipePipe],
+    ],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -33,7 +34,8 @@ import { LimitWordsPipePipe } from 'src/app/shared/Pipes/limit-words-pipe.pipe';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

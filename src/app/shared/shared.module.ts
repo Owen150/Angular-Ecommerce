@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { AppRoutingModule } from '../app-routing.module';
+// import { AppRoutingModule } from '../app-routing.module';
 
 import { CreateProductComponent } from './UI/create-product-form/create-product.component';
 import { DeleteConfirmationComponent } from './UI/delete-confirmation-modal/delete-confirmation.component';
@@ -27,16 +27,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './Layouts/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ProductItemComponent } from './UI/product-item/product-item.component';
+import { LimitWordsPipePipe } from './Pipes/limit-words-pipe.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, LimitWordsPipePipe
   ],
   exports: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent
   ],
   imports: [
-    AppRoutingModule,
     CommonModule,
     MatDialogModule,
     FormsModule,
@@ -55,7 +57,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    NgxPermissionsModule.forRoot()
+    NgxPermissionsModule.forRoot(),
+    RouterModule
   ]
 })
 export class SharedModule { }
