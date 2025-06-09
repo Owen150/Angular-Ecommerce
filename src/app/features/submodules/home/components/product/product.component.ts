@@ -16,7 +16,6 @@ export class ProductComponent implements OnInit {
   productId!: number;
   productData: any;
   categories: any;
-  //Variable will be used to show and hide the two cart buttons
   isProductInCart: boolean = false;
 
   constructor(
