@@ -1,5 +1,6 @@
 <div *ngIf="isMenuVisible">
-  <mat-toolbar class="d-flex align-items-center justify-content-between header-container">
+  <app-navbar></app-navbar>
+  <!-- <mat-toolbar class="d-flex align-items-center justify-content-between header-container">
     <div class="main-icon">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
@@ -18,7 +19,6 @@
           [(ngModel)]="searchText"
           (keyup)="searchProduct(searchText)"
         />
-        <!-- <mat-icon>search</mat-icon> -->
       </div>
     </form>
 
@@ -33,7 +33,7 @@
         <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
       </div>
     </div>
-  </mat-toolbar>
+  </mat-toolbar> -->
 
   <mat-drawer-container class="sidebar" autosize>
     <mat-drawer
