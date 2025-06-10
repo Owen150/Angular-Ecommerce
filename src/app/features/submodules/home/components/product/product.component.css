@@ -4466,7 +4466,8 @@ fieldset:disabled .btn {
 }
 
 .product-img-top {
-  width: 100%;
+  width: 50%;
+  height: 50%;
 }
 
 .card-img,
