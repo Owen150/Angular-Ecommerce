@@ -1,11 +1,9 @@
 <div class="row">
-  <div class="col-md-12 mt-4">
-    <div class="product-grid">
+  <div class="col-md-12">
       <app-product-item
         [products]="
           productData | search : searchText | slice : 0 : limitControl
         "
       ></app-product-item>
-    </div>
   </div>
 </div>

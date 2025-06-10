@@ -10,13 +10,13 @@
   cursor: pointer;
 }
 
-.product-card.selected {
+/* .product-card.selected {
   border: 5px solid blue;
-}
+} */
 
-.product-card:hover {
+/* .product-card:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-}
+} */
 
 /* .card-content {
     position: absolute;
