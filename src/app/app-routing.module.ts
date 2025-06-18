@@ -9,6 +9,7 @@ import { permissionsGuard } from './core/Guards/permissions.guard';
 import { LoginComponent } from './shared/UI/login/login.component';
 import { SignupComponent } from './shared/UI/signup/signup.component';
 import { TemplatesComponent } from './features/submodules/templates/templates/templates.component';
+import { AboutPageComponent } from './shared/UI/about-page/about-page.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'about', component: AboutPageComponent },
   {
     path: 'templates',
     loadChildren: () =>

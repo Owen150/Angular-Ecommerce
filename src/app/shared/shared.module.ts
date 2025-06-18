@@ -39,7 +39,7 @@ import { AboutPageComponent } from './UI/about-page/about-page.component';
     HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, LimitWordsPipePipe, NavbarComponent, FooterComponent, AboutPageComponent
   ],
   exports: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, AboutPageComponent
   ],
   imports: [
     CommonModule,
