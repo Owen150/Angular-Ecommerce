@@ -114,15 +114,15 @@
           <div class="card-body p-3">
             <div class="text-center">
               <!-- Product name -->
-              <h5 class="mb-2">{{ product.title | limitWordsPipe : 5 }}</h5>
+              <h5 class="mb-2">{{ product.title | limitWordsPipe : 3 }}</h5>
               <!-- Product price -->
-              <small class="text-muted">{{product.price | currency}}</small>
+              <small class="text-muted">{{product.price * 130 | currency : "Ksh "}}</small>
             </div>
           </div>
           <!-- Product actions -->
           <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-              <a class="btn btn-sm btn-outline-dark mt-auto" href="#">View options</a>
+              <a class="btn btn-sm btn-outline-dark mt-auto" (click)="navigateToProduct(product.id)">View Product</a>
             </div>
           </div>
         </div>
