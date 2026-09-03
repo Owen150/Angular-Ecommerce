@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid grey;">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="#!">Duka</a>
-    <button
+    <a routerLink="home" class="navbar-brand" href="#!">Duka</a>
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+        <!-- <span class="navbar-toggler-icon"></span> -->
+    </button>
+    <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -11,8 +15,8 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    </button> -->
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#!">Home</a>
@@ -44,11 +48,136 @@
         </button>
 
         <div routerLink="login" class="link">
-          <!-- <mat-icon>person_outline</mat-icon> -->
           <a class="link"><span>Login</span></a>
         </div>
       </form>
-    </div>
+    </div> -->
+    <mat-drawer-container class="sidebar" autosize>
+    <mat-drawer
+      opened="false"
+      mode="side"
+      style="width: auto; background-color: #ffe6c6"
+      #drawer
+    >
+      <mat-nav-list style="margin-left: 8px">
+        <div class="side-nav">
+          <div>
+            <mat-list-item>
+              <a routerLink="home" class="link"
+                ><mat-icon>home</mat-icon><span>Home</span></a
+              >
+            </mat-list-item>
+
+            <mat-list-item>
+              <div
+                class="add-product"
+                (click)="productModal()"
+                style="margin: auto"
+              >
+                <mat-icon>note_add</mat-icon>
+                <span>Add Product</span>
+              </div>
+            </mat-list-item>
+
+            <div (click)="showSortMenu()">
+              <mat-list-item>
+                <a class="link">
+                  <mat-icon>sort</mat-icon>
+                  <span>Sort Products</span>
+                  <div style="margin-left: auto">
+                    <mat-icon>expand_more</mat-icon>
+                  </div>
+                </a>
+              </mat-list-item>
+              <mat-nav-list *ngIf="isSortMenuVisible">
+                <div class="sort-products-list">
+                  <mat-list-item
+                    *ngFor="let criterion of criteria"
+                    class="dropdown-list"
+                    (click)="sortProducts(criterion)"
+                  >
+                    <P class="criterion">{{ criterion }}</P>
+                  </mat-list-item>
+                </div>
+              </mat-nav-list>
+            </div>
+
+            <div (click)="showPriceFilters()">
+              <mat-list-item>
+                <a class="link">
+                  <mat-icon>sort</mat-icon>
+                  <span>Price Filter</span>
+                  <div style="margin-left: auto">
+                    <mat-icon>expand_more</mat-icon>
+                  </div>
+                </a>
+              </mat-list-item>
+            </div>
+            <mat-nav-list *ngIf="isPriceFiltersVisible">
+              <div class="price-filter-list">
+                <mat-list-item
+                  *ngFor="let priceFilter of priceFilters"
+                  class="dropdown-list"
+                  (click)="filterProductsByPrice(priceFilter)"
+                >
+                  <P class="price-filter"
+                    >Upto {{ priceFilter * 100 | currency : "Ksh " }}</P
+                  >
+                </mat-list-item>
+              </div>
+            </mat-nav-list>
+
+            <div (click)="showCategories()">
+              <mat-list-item>
+                <a routerLink="home/categories" class="link">
+                  <mat-icon>menu</mat-icon>
+                  <span>Categories</span>
+                  <div style="margin-left: auto">
+                    <mat-icon>expand_more</mat-icon>
+                  </div>
+                </a>
+              </mat-list-item>
+            </div>
+            <mat-nav-list *ngIf="isCategoriesVisible">
+              <div class="price-filter-list">
+                <mat-list-item
+                  *ngFor="let category of categories"
+                  class="dropdown-list"                  
+                >
+                  <p class="price-filter" (click)="filterProductsByCategory(category)">{{ category }}</p>
+                </mat-list-item>
+              </div>
+            </mat-nav-list>
+
+            <mat-list-item *ngFor="let item of menuList">
+              <a routerLink="{{ item.menu }}" class="link"
+                ><mat-icon>build</mat-icon><span>{{ item.menu }}</span></a
+              >
+            </mat-list-item>
+
+            <!-- <mat-list-item>
+              <a routerLink="analytics" class="link">
+                <mat-icon>build</mat-icon>
+                Analytics
+              </a>
+            </mat-list-item>
+
+            <mat-list-item>
+              <a routerLink="user" class="link">
+                <mat-icon>build</mat-icon>
+                User
+              </a>
+            </mat-list-item> -->
+          </div>
+        </div>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
   </div>
 </nav>
 <script src="/js/scripts.js">

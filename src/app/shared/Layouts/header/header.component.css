@@ -1,6 +1,7 @@
 .header-container {
   background-color: #ebaaaa;
-  position: sticky;
+  /* position: static; */
+  width: 100%;
   /* z-index: 1; */
   top: 0;
 

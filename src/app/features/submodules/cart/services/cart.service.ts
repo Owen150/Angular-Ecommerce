@@ -20,6 +20,7 @@ export class CartService {
     this.cartProducts.push(currentProduct);
     this.cartSubject.next(this.cartProducts);
   }
+   
   getAllCartItems() {
     return this.cartProducts;
   }
