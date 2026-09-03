@@ -1,19 +1,34 @@
 <div>
-  <div class="col-md-12">
     <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-          <h1 class="display-4 fw-bolder">Shop in style</h1>
+          <h1 class="display-4 fw-bolder text-white-50">TyapTech</h1>
           <p class="lead fw-normal text-white-50 mb-0">
-            With this shop hompeage template
+            Improvise. Adapt. Overcome.
           </p>
+          <p class="mt-2 fw-bolder text-white-50">Shop with us for the best products and deals.</p>
         </div>
       </div>
     </header>
-      <app-product-item
-        [products]="
-          productData | search : searchText | slice : 0 : limitControl
-        "
-      ></app-product-item>
-  </div>
+    <div class="search-container m-4">
+      <form #searchBox="ngForm">
+        <div class="header-search">
+          <input
+            matInput
+            class="search-box"
+            placeholder="Find Item..."
+            type="text"
+            name="searchText"
+            [(ngModel)]="searchText"
+            (keyup)="searchProduct(searchText)"
+          />
+        </div>
+      </form>
+
+    </div>
+    <app-product-item
+      [products]="
+        productData | search : searchText | slice : 0 : limitControl
+      "
+    ></app-product-item>
 </div>

@@ -1,32 +1,28 @@
 <div *ngIf="isMenuVisible">
   <!-- <app-navbar></app-navbar> -->
 
-  <mat-toolbar class="d-flex align-items-center justify-content-between header-container">
+  <mat-toolbar class="header-container">
     <div class="main-icon">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <a routerLink="home" class="main-name"><span>Shop</span></a>
+      <a routerLink="home" class="main-name"><span>TyapTech</span></a>
+    </div>
+    <div class="products">
+      <a routerLink="home" class="link">
+        <!-- <mat-icon>person_outline</mat-icon> -->
+        <span>Products</span>
+      </a>
     </div>
 
-    <form #searchBox="ngForm">
-      <div class="header-search">
-        <input
-          matInput
-          class="search-box"
-          placeholder="Find Item..."
-          type="text"
-          name="searchText"
-          [(ngModel)]="searchText"
-          (keyup)="searchProduct(searchText)"
-        />
-      </div>
-    </form>
-
     <div class="right-header-nav">
+      <div routerLink="about" class="link">
+        <span>About</span>
+      </div>
+
       <div routerLink="login" class="link">
         <mat-icon>person_outline</mat-icon>
-        <a class="link"><span>Login</span></a>
+        <!-- <span>Login</span> -->
       </div>
 
       <div routerLink="cart" class="link">

@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   productData: any;
   categories!: string;
   id: any;
-  searchText: any;
+  searchText: any = '';
   limitControl: any;
 
   constructor(
@@ -79,5 +79,9 @@ export class HomeComponent implements OnInit {
     if (!this.limitControl) {
       this.limitControl = undefined;
     }
+  }
+
+  searchProduct(searchText: any) {
+    this.productService.getSearchString(searchText);
   }
 }

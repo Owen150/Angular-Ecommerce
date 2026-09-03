@@ -30,16 +30,15 @@ import { MatListModule } from '@angular/material/list';
 import { ProductItemComponent } from './UI/product-item/product-item.component';
 import { LimitWordsPipePipe } from './Pipes/limit-words-pipe.pipe';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './Layouts/navbar/navbar.component';
 import { FooterComponent } from './Layouts/footer/footer.component';
 import { AboutPageComponent } from './UI/about-page/about-page.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, LimitWordsPipePipe, NavbarComponent, FooterComponent, AboutPageComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, LimitWordsPipePipe, FooterComponent, AboutPageComponent
   ],
   exports: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, AboutPageComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, AboutPageComponent, FooterComponent, LimitWordsPipePipe
   ],
   imports: [
     CommonModule,

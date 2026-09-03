@@ -1,0 +1,6 @@
+.header-search {
+    display: flex;
+    justify-content: center;
+    padding: 6px;
+    align-items: center;
+  }
