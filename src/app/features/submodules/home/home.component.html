@@ -10,12 +10,12 @@
         </div>
       </div>
     </header>
-    <div class="search-container m-4">
+    <div class="filters-section m-2">
       <form #searchBox="ngForm">
         <div class="header-search">
           <input
             matInput
-            class="search-box"
+            class="search-input"
             placeholder="Find Item..."
             type="text"
             name="searchText"
@@ -25,6 +25,15 @@
         </div>
       </form>
 
+      <!-- <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search products..."
+            [(ngModel)]="searchTerm"
+            (ngModelChange)="onSearchChange()"
+            class="search-input"
+          />
+      </div> -->
     </div>
     <app-product-item
       [products]="
