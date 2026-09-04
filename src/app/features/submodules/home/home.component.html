@@ -1,43 +1,33 @@
 <div>
-    <header class="bg-dark py-5">
-      <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-          <h1 class="display-4 fw-bolder text-white-50">TyapTech</h1>
-          <p class="lead fw-normal text-white-50 mb-0">
-            Improvise. Adapt. Overcome.
-          </p>
-          <p class="mt-2 fw-bolder text-white-50">Shop with us for the best products and deals.</p>
-        </div>
+  <header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+        <h1 class="display-4 fw-bolder text-white-50">TyapTech</h1>
+        <p class="lead fw-normal text-white-50 mb-0">
+          Improvise. Adapt. Overcome.
+        </p>
+        <p class="mt-2 fw-bolder text-white-50">Shop with us for the best products and deals.</p>
       </div>
-    </header>
-    <div class="filters-section m-2">
-      <form #searchBox="ngForm">
-        <div class="header-search">
-          <input
-            matInput
-            class="search-input"
-            placeholder="Find Item..."
-            type="text"
-            name="searchText"
-            [(ngModel)]="searchText"
-            (keyup)="searchProduct(searchText)"
-          />
-        </div>
-      </form>
-
-      <!-- <div class="search-box">
-          <input
-            type="text"
-            placeholder="Search products..."
-            [(ngModel)]="searchTerm"
-            (ngModelChange)="onSearchChange()"
-            class="search-input"
-          />
-      </div> -->
     </div>
-    <app-product-item
-      [products]="
-        productData | search : searchText | slice : 0 : limitControl
-      "
-    ></app-product-item>
+  </header>
+  <div class="filters-section m-2">
+    <form #searchBox="ngForm">
+      <div class="header-search">
+        <input
+          matInput
+          class="search-input"
+          placeholder="Search Products..."
+          type="text"
+          name="searchText"
+          [(ngModel)]="searchText"
+          (keyup)="searchProduct(searchText)"
+        />
+      </div>
+    </form>
+  </div>
+  <app-product-item
+    [products]="
+      productData | search : searchText | slice : 0 : limitControl
+    "
+  ></app-product-item>
 </div>
