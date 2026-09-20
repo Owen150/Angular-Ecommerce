@@ -4,5 +4,6 @@ export const environment = {
   categoriesURL: 'https://fakestoreapi.com/products/categories',
   userURL: 'http://localhost:4000/user',
   roleURL: 'http://localhost:4000/role',
-  roleAccessURL: 'http://localhost:4000/roleaccess?role='
+  roleAccessURL: 'http://localhost:4000/roleaccess?role=',
+  apiUrl: 'http://localhost:8080/api'
 };
