@@ -18,4 +18,9 @@ describe('JavascriptPracsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render the default template text', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.textContent).toContain('javascript-pracs works!');
+  });
 });
