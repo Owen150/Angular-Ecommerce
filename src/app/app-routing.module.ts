@@ -10,6 +10,7 @@ import { LoginComponent } from './shared/UI/login/login.component';
 import { SignupComponent } from './shared/UI/signup/signup.component';
 import { TemplatesComponent } from './features/submodules/templates/templates/templates.component';
 import { AboutPageComponent } from './shared/UI/about-page/about-page.component';
+import { JavascriptPracsComponent } from './shared/UI/javascript-pracs/javascript-pracs.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,7 @@ const routes: Routes = [
         (m) => m.TemplatesModule
       ),
   },
+  { path: 'jstest', component: JavascriptPracsComponent }
 ];
 
 @NgModule({
