@@ -5,4 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './javascript-pracs.component.html',
   styleUrls: ['./javascript-pracs.component.css']
 })
-export class JavascriptPracsComponent {}
+export class JavascriptPracsComponent {
+  title: string = 'JavaScript Practice';
+  isDisabled: boolean = true;
+}
