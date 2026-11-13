@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 export class JavascriptPracsComponent {
   title: string = 'JavaScript Practice';
   isDisabled: boolean = true;
+
+  clickFunction(a:number, b:number){
+    console.log("Interview Cracked");
+    console.log(a + b);
+  }
+
+  name: string = 'Interview';
 }
