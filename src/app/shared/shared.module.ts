@@ -32,13 +32,14 @@ import { LimitWordsPipePipe } from './Pipes/limit-words-pipe.pipe';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './Layouts/footer/footer.component';
 import { AboutPageComponent } from './UI/about-page/about-page.component';
+import { JavascriptPracsComponent } from './UI/javascript-pracs/javascript-pracs.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, LimitWordsPipePipe, FooterComponent, AboutPageComponent
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, LimitWordsPipePipe, FooterComponent, AboutPageComponent, JavascriptPracsComponent
   ],
   exports: [
-    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, AboutPageComponent, FooterComponent, LimitWordsPipePipe
+    HeaderComponent, CreateProductComponent, DeleteConfirmationComponent, RolepopupComponent, UserlistComponent, LoginComponent, SignupComponent, ProductItemComponent, AboutPageComponent, FooterComponent, LimitWordsPipePipe, JavascriptPracsComponent
   ],
   imports: [
     CommonModule,
